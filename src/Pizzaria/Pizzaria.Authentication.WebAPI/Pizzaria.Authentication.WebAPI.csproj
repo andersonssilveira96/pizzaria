@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="9.0.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="5.0.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pizzaria.Authentication.Domain\Pizzaria.Authentication.Domain.csproj" />
+    <ProjectReference Include="..\Pizzaria.Authentication.Infra.Data\Pizzaria.Authentication.Infra.Data.csproj" />
+    <ProjectReference Include="..\Pizzaria.Authentication.Infra.IoC\Pizzaria.Authentication.Infra.IoC.csproj" />
+  </ItemGroup>
+
+</Project>
