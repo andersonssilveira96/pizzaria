@@ -1,5 +1,5 @@
 ﻿using MediatR;
-using Pizzaria.Authentication.Domain.Command;
+using Pizzaria.Authentication.Domain.Commands;
 using System.Threading;
 using System.Threading.Tasks;
 

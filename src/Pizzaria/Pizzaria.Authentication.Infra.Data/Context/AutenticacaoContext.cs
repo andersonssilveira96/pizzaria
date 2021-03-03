@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace Pizzaria.Authentication.Infra.Data.Context
@@ -14,15 +15,14 @@ namespace Pizzaria.Authentication.Infra.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-           // optionsBuilder.UseSqlServer(_configuration.GetConnectionString("db"));
-           // optionsBuilder.UseLazyLoadingProxies();
+            optionsBuilder.UseSqlServer(_configuration.GetConnectionString("db"));
+            optionsBuilder.UseLazyLoadingProxies();
 
             base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            // modelBuilder.ForSqlServerUseIdentityColumns();
+        { 
             // modelBuilder.ApplyConfiguration(new UsuarioConfig());
             // modelBuilder.ApplyConfiguration(new EscolaridadeConfig());
         }

@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Pizzaria.Authentication.Domain.Command;
+using Pizzaria.Authentication.Domain.Commands;
 using System.Threading.Tasks;
 
 namespace Pizzaria.Authentication.WebAPI.Controllers
