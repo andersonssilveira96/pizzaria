@@ -23,7 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzaria.Authentication.Inf
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzaria.Authentication.Infra.IoC", "Pizzaria.Authentication.Infra.IoC\Pizzaria.Authentication.Infra.IoC.csproj", "{92101AA4-D2D4-4662-A4AD-691720F65F11}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizzaria.Authentication.WebAPI", "Pizzaria.Authentication.WebAPI\Pizzaria.Authentication.WebAPI.csproj", "{4F442B66-8478-4C18-8CB6-178DD1B60922}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzaria.Authentication.WebAPI", "Pizzaria.Authentication.WebAPI\Pizzaria.Authentication.WebAPI.csproj", "{4F442B66-8478-4C18-8CB6-178DD1B60922}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pizzaria.Core.APIExtensions", "Pizzaria.Core.APIExtensions\Pizzaria.Core.APIExtensions.csproj", "{15AE2DC3-8ACE-494D-82C9-79FECBB008FB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{4F442B66-8478-4C18-8CB6-178DD1B60922}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F442B66-8478-4C18-8CB6-178DD1B60922}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F442B66-8478-4C18-8CB6-178DD1B60922}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15AE2DC3-8ACE-494D-82C9-79FECBB008FB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15AE2DC3-8ACE-494D-82C9-79FECBB008FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15AE2DC3-8ACE-494D-82C9-79FECBB008FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15AE2DC3-8ACE-494D-82C9-79FECBB008FB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -61,6 +67,7 @@ Global
 		{87BD5290-F487-48B3-B231-D4C8A486DE24} = {613A65DB-C684-4A4A-8B73-3D446AD02A32}
 		{92101AA4-D2D4-4662-A4AD-691720F65F11} = {8422C9DE-B399-40D3-B2BA-E1DC149B0AFA}
 		{4F442B66-8478-4C18-8CB6-178DD1B60922} = {A43DE178-EF72-43E7-889E-F4C18BD7B644}
+		{15AE2DC3-8ACE-494D-82C9-79FECBB008FB} = {32CD71F6-700D-4A58-B9CE-191A93151452}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F2246314-710E-4CAC-ACAC-6E51B65C2B93}

@@ -21,6 +21,7 @@ namespace Pizzaria.Authentication.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddHttpContextAccessor();
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

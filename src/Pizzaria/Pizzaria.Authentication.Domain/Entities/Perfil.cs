@@ -6,6 +6,6 @@ namespace Pizzaria.Authentication.Domain.Entities
     {
         public int Id { get; private set; }
         public string Descricao { get; private set; }
-        public IEnumerable<Permissao> Permissoes { get; private set; }
+        public virtual ICollection<PerfilPermissao> PerfilPermissao { get; private set; }
     }
 }
