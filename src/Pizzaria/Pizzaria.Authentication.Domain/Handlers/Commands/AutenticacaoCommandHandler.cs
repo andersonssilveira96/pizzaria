@@ -1,16 +1,34 @@
-﻿using MediatR;
+﻿using FluentValidation.Results;
+using MediatR;
 using Pizzaria.Authentication.Domain.Commands;
+using Pizzaria.Authentication.Domain.Interfaces.Repositories;
+using Pizzaria.Authentication.Domain.Response;
+using Pizzaria.Authentication.Domain.Validators;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Pizzaria.Authentication.Domain.Handlers.Commands
 {
     public class AutenticacaoCommandHandler 
-        : IRequestHandler<AutenticarCommand, bool>
+        : IRequestHandler<AutenticarCommand, AutenticarResponse>
     {
-        public Task<bool> Handle(AutenticarCommand request, CancellationToken cancellationToken)
+        private readonly IUsuarioRepository _usuarioRepository;
+        public AutenticacaoCommandHandler(IUsuarioRepository usuarioRepository)
         {
-            return Task.FromResult(true);
+            _usuarioRepository = usuarioRepository;
+        }
+        public Task<AutenticarResponse> Handle(AutenticarCommand command, CancellationToken cancellationToken)
+        {
+            AutenticarCommandValidator validator = new AutenticarCommandValidator();
+            ValidationResult result = validator.Validate(command);
+
+            if(result.IsValid)
+            {
+                _usuarioRepository.Autenticar(command);
+            }
+
+            return Task.FromResult(new AutenticarResponse() { Id = 1, Nome = "Teste de usuário", Token = Guid.NewGuid().ToString() });
         }
     }
 }

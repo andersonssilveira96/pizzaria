@@ -22,7 +22,7 @@
     <ProjectReference Include="..\Pizzaria.Authentication.Domain\Pizzaria.Authentication.Domain.csproj" />
     <ProjectReference Include="..\Pizzaria.Authentication.Infra.Data\Pizzaria.Authentication.Infra.Data.csproj" />
     <ProjectReference Include="..\Pizzaria.Authentication.Infra.IoC\Pizzaria.Authentication.Infra.IoC.csproj" />
-    <ProjectReference Include="..\Pizzaria.Core.APIExtensions\Pizzaria.Core.APIExtensions.csproj" />
+    <ProjectReference Include="..\Pizzaria.Core.APIExtensions\Pizzaria.Core.API.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Pizzaria.Authentication.Domain.Interfaces.Repositories.Base;
 using Pizzaria.Authentication.Infra.Data.Context;
+using Pizzaria.Core.Domain;
 using System;
 using System.Collections.Generic;
 using System.Linq;

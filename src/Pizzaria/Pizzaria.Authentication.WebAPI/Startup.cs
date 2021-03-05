@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using Pizzaria.Authentication.Infra.IoC;
 using System;
 
 namespace Pizzaria.Authentication.WebAPI
@@ -21,8 +22,10 @@ namespace Pizzaria.Authentication.WebAPI
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddHttpContextAccessor();
+            services.Configure();
+
             services.AddControllers();
+
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Pizzaria.Authentication.WebAPI", Version = "v1" });

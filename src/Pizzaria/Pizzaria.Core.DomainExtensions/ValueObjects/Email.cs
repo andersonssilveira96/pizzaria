@@ -1,7 +1,12 @@
-﻿namespace Pizzaria.Authentication.Domain.ValueObjects
+﻿using System.Collections.Generic;
+
+namespace Pizzaria.Core.Domain.ValueObjects
 {
-    public struct Email
+    public class Email : ValueObject
     {
+        protected Email()
+        {
+        }
         public Email(string email)
         {
             Valor = email;
@@ -13,6 +18,11 @@
         public void Validar()
         {
             if (Valor != null) Valido = true;
+        }
+
+        protected override IEnumerable<object> GetAtomicValues()
+        {
+            yield return Valor;
         }
     }
 }

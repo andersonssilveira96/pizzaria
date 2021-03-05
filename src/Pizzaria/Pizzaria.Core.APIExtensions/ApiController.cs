@@ -1,15 +1,14 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Pizzaria.Core.APIExtensions
+namespace Pizzaria.Core.API
 {
     public class ApiController : ControllerBase
     {
         protected readonly IMediator _mediator;
-        public ApiController()
+        public ApiController(IMediator mediator)
         {
-            var services = this.HttpContext.RequestServices;           
-            _mediator = (IMediator)services.GetService(typeof(IMediator)); 
+            _mediator = mediator;                    
         }
     }
 }

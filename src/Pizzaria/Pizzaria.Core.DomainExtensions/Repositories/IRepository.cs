@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Pizzaria.Authentication.Domain.Interfaces.Repositories.Base
+namespace Pizzaria.Core.Domain
 {
     public interface IRepository<T> : IDisposable where T : class
     {

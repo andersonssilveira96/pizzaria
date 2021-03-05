@@ -1,7 +1,7 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
-using Pizzaria.Authentication.Infra.Data.Models;
+using Pizzaria.Authentication.Domain.Entities;
 
 namespace Pizzaria.Authentication.Infra.Data.Context
 {
@@ -9,10 +9,10 @@ namespace Pizzaria.Authentication.Infra.Data.Context
     {
         private readonly IConfiguration _configuration;
 
-        public DbSet<PerfilModel> Perfil { get; set; }
-        public DbSet<PermissaoModel> Permissao { get; set; }
-        public DbSet<PerfilPermissaoModel> PerfilPermissao { get; set; }
-        public DbSet<UsuarioModel> Usuario { get; set; }
+        public DbSet<Perfil> Perfil { get; set; }
+        public DbSet<Permissao> Permissao { get; set; }
+        public DbSet<PerfilPermissao> PerfilPermissao { get; set; }
+        public DbSet<Usuario> Usuario { get; set; }
 
         public AutenticacaoContext(IConfiguration configuration)
         {

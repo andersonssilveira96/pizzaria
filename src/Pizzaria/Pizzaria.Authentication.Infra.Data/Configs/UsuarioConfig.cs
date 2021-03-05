@@ -1,15 +1,21 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Pizzaria.Authentication.Infra.Data.Models;
+using Pizzaria.Authentication.Domain.Entities;
 
 namespace Pizzaria.Authentication.Infra.Data.Configs
 {
-    public class UsuarioConfig : IEntityTypeConfiguration<UsuarioModel>
+    public class UsuarioConfig : IEntityTypeConfiguration<Usuario>
     {
-        public void Configure(EntityTypeBuilder<UsuarioModel> builder)
+        public void Configure(EntityTypeBuilder<Usuario> builder)
         {
             builder.HasKey(p => p.Id);
-            builder.Property(p => p.Email).IsRequired();
+
+            builder.OwnsOne(p => p.Email, x => { 
+                x.Property(x => x.Valor).HasColumnName("Email");
+                x.Ignore(x => x.Valido);
+            });
+                
+
             builder.Property(p => p.Nome).IsRequired();
             builder.Property(p => p.Senha).IsRequired();
             builder.Property(p => p.Sobrenome).IsRequired();

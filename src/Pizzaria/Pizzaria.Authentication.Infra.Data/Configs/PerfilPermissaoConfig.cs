@@ -1,12 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Pizzaria.Authentication.Infra.Data.Models;
+using Pizzaria.Authentication.Domain.Entities;
 
 namespace Pizzaria.Authentication.Infra.Data.Configs
 {
-    public class PerfilPermissaoConfig : IEntityTypeConfiguration<PerfilPermissaoModel>
+    public class PerfilPermissaoConfig : IEntityTypeConfiguration<PerfilPermissao>
     {
-        public void Configure(EntityTypeBuilder<PerfilPermissaoModel> builder)
+        public void Configure(EntityTypeBuilder<PerfilPermissao> builder)
         {
             builder.HasKey(e => e.Id);
             builder.HasOne(e => e.Perfil).WithMany(e => e.PerfilPermissao).HasForeignKey(e => e.PerfilId);
