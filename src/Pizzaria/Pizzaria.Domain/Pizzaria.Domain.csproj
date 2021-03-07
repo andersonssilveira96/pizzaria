@@ -16,8 +16,8 @@
     <PackageReference Include="System.Security.Claims" Version="4.3.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Pizzaria.Core.DomainExtensions\Pizzaria.Core.Domain.csproj" />
+  <ItemGroup>   
+    <ProjectReference Include="..\Pizzaria.Core.Domain\Pizzaria.Core.Domain.csproj" />
   </ItemGroup>
 
 </Project>
