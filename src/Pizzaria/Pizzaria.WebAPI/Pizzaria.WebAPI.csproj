@@ -2,6 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>a2a03619-62a3-4306-9746-e1c20fe9e963</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,15 +16,14 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.10.13" />
     <PackageReference Include="SimpleSoft.Mediator.Microsoft.Extensions.ValidationPipeline" Version="2.0.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Pizzaria.Domain\Pizzaria.Domain.csproj" />
-    <ProjectReference Include="..\Pizzaria.Infra.Data\Pizzaria.Infra.Data.csproj" />
-    <ProjectReference Include="..\Pizzaria.Infra.CrossCutting.Ioc\Pizzaria.Infra.CrossCutting.IoC.csproj" />
-    <ProjectReference Include="..\Pizzaria.Core.APIExtensions\Pizzaria.Core.API.csproj" />
+    <ProjectReference Include="..\Pizzaria.Core.API\Pizzaria.Core.API.csproj" />
+    <ProjectReference Include="..\Pizzaria.Infra.CrossCutting.IoC\Pizzaria.Infra.CrossCutting.IoC.csproj" />
   </ItemGroup>
 
 </Project>

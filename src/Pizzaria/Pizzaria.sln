@@ -15,9 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.1 - Data", "3.1 - Data", 
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.2 - CrossCutting", "3.2 - CrossCutting", "{8422C9DE-B399-40D3-B2BA-E1DC149B0AFA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzaria.Core.API", "Pizzaria.Core.APIExtensions\Pizzaria.Core.API.csproj", "{15AE2DC3-8ACE-494D-82C9-79FECBB008FB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzaria.Core.API", "Pizzaria.Core.API\Pizzaria.Core.API.csproj", "{15AE2DC3-8ACE-494D-82C9-79FECBB008FB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzaria.Core.Domain", "Pizzaria.Core.DomainExtensions\Pizzaria.Core.Domain.csproj", "{B8060305-3618-4782-8643-AA4A5E209DFE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzaria.Core.Domain", "Pizzaria.Core.Domain\Pizzaria.Core.Domain.csproj", "{B8060305-3618-4782-8643-AA4A5E209DFE}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pizzaria.WebAPI", "Pizzaria.WebAPI\Pizzaria.WebAPI.csproj", "{CDB96A29-0ECB-4F0D-AD53-3DD13FDC8821}"
 EndProject
