@@ -34,7 +34,7 @@ namespace Pizzaria.Domain.Handlers.Commands
                 if (usuario != null)
                 {
                     var token = _tokenService.GerarToken(usuario);
-                    return Task.FromResult(new AutenticarResponse() { Id = usuario.Id, Nome = usuario.Nome, Email = usuario.Email.Valor, Token = token, Sucesso = true });
+                    return Task.FromResult(new AutenticarResponse() { Id = usuario.Id, Nome = usuario.Nome, Email = usuario.Email.Valor, Token = token, Sucesso = true, Mesagem = new List<string>() { "Usuário autenticado com sucesso" } });
                 }
 
             }
