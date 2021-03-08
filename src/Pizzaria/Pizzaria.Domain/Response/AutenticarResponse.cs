@@ -8,5 +8,6 @@ namespace Pizzaria.Domain.Response
         public string Nome { get; set; }
         public string Email { get; set; }
         public string Token { get; set; }
+        public PerfilResponse Perfil { get; set; }
     }
 }

@@ -25,7 +25,7 @@ namespace Pizzaria.Domain.Services
 
             foreach(var item in usuario.Perfil.PerfilPermissao)
             {
-                claims.Add(new Claim(item.Permissao.Nome, item.Permissao.Abreviacao));
+                claims.Add(new Claim(item.Permissao.Descricao, item.Permissao.Abreviacao));
             }
 
             var tokenHandler = new JwtSecurityTokenHandler();

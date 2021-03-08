@@ -1,6 +1,7 @@
 ﻿using FluentValidation.Results;
 using MediatR;
 using Pizzaria.Domain.Commands;
+using Pizzaria.Domain.Factories;
 using Pizzaria.Domain.Interfaces.Repositories;
 using Pizzaria.Domain.Interfaces.Services;
 using Pizzaria.Domain.Response;
@@ -34,7 +35,7 @@ namespace Pizzaria.Domain.Handlers.Commands
                 if (usuario != null)
                 {
                     var token = _tokenService.GerarToken(usuario);
-                    return Task.FromResult(new AutenticarResponse() { Id = usuario.Id, Nome = usuario.Nome, Email = usuario.Email.Valor, Token = token, Sucesso = true, Mesagem = new List<string>() { "Usuário autenticado com sucesso" } });
+                    return Task.FromResult(AutenticarResponseFactory.Criar(usuario, token));
                 }
 
             }
