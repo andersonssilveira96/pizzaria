@@ -40,7 +40,7 @@ namespace Pizzaria.Domain.Handlers.Commands
 
             }
             
-            return Task.FromResult(new AutenticarResponse() { Sucesso = false, Mesagem = result.Errors.Any() ? result.Errors.Select(x => x.ErrorMessage).ToList() : new List<string>() { "Usuário ou senha inválidos" } });
+            return Task.FromResult(new AutenticarResponse() { Sucesso = false, Mensagem = result.Errors.Any() ? result.Errors.Select(x => x.ErrorMessage).ToList() : new List<string>() { "Usuário ou senha inválidos" } });
         }
     }
 }

@@ -25,7 +25,7 @@ namespace Pizzaria.WebAPI.Controllers
             if (retorno.Sucesso)
                 return Ok(retorno);
             else
-                return BadRequest(new { Sucesso = retorno.Sucesso, Mensagem = retorno.Mesagem });
+                return BadRequest(new { Sucesso = retorno.Sucesso, Mensagem = retorno.Mensagem });
         }       
     }
 }
