@@ -10,7 +10,7 @@ namespace Pizzaria.Infra.Data.Data.Configs
         {
             builder.HasKey(e => e.Id);
             builder.Property(e => e.Abreviacao).IsRequired();
-            builder.Property(e => e.Nome).IsRequired();      
+            builder.Property(e => e.Descricao).IsRequired();      
         }
     }
 }
