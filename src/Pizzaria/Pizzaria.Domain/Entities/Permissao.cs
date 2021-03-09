@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using Pizzaria.Core.Domain.Entities;
+using System.Collections.Generic;
 
 namespace Pizzaria.Domain.Entities
 {
-    public class Permissao
+    public class Permissao : EntityBase
     {
         public int Id { get; private set; }
         public string Descricao { get; private set; }

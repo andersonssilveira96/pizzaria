@@ -1,6 +1,7 @@
 ﻿using Pizzaria.Core.Domain.Response;
+using Pizzaria.Domain.Response.Perfil;
 
-namespace Pizzaria.Domain.Response
+namespace Pizzaria.Domain.Response.Autenticacao
 {
     public class AutenticarResponse : BaseResponse
     {

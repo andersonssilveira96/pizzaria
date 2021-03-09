@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
-using Pizzaria.Domain.Commands;
+using Pizzaria.Domain.Commands.Autenticacao;
 
-namespace Pizzaria.Domain.Validators
+namespace Pizzaria.Domain.Validators.Autenticacao
 {
     public class AutenticarCommandValidator : AbstractValidator<AutenticarCommand>
     {

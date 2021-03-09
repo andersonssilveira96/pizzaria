@@ -1,10 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Pizzaria.Domain.Commands;
+using Pizzaria.Domain.Commands.Autenticacao;
 using Pizzaria.Domain.Entities;
 using Pizzaria.Domain.Interfaces.Repositories;
-using Pizzaria.Domain.Interfaces.Services;
-using Pizzaria.Domain.Response;
-using Pizzaria.Domain.Services;
 using Pizzaria.Infra.Data.Data.Context;
 using Pizzaria.Infra.Data.Data.Repositories.Base;
 using System.Linq;

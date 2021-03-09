@@ -20,6 +20,9 @@ namespace Pizzaria.Infra.Data.Data.Configs
             builder.Property(p => p.Senha).IsRequired();
             builder.Property(p => p.Sobrenome).IsRequired();
 
+            builder.Property(p => p.Telefone).IsRequired();
+            builder.Property(p => p.DDD).IsRequired();
+
             builder.HasOne(p => p.Perfil).WithMany().HasForeignKey(x => x.PerfilId).IsRequired();
         }
     }

@@ -1,6 +1,7 @@
 ﻿using Pizzaria.Domain.Entities;
-using Pizzaria.Domain.Response;
-using System.Collections.Generic;
+using Pizzaria.Domain.Response.Autenticacao;
+using Pizzaria.Domain.Response.Perfil;
+using Pizzaria.Domain.Response.Permissao;
 using System.Linq;
 
 namespace Pizzaria.Domain.Factories

@@ -41,8 +41,12 @@ namespace Pizzaria.WebAPI
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Pizzaria.WebAPI", Version = "v1" });
             });
-          
-            services.AddMediatR(AppDomain.CurrentDomain.Load("Pizzaria.Domain"));
+
+            var assembly = AppDomain.CurrentDomain.Load("Pizzaria.Domain");
+            services.AddMediatR(assembly);
+            
+            // TODO
+            // services.AddValidation(assembly);
 
             var key = Encoding.ASCII.GetBytes(Configuration["Secret"]);
             services.ConfigureAuthentication(key);

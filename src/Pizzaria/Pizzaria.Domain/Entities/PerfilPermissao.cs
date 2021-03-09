@@ -1,6 +1,8 @@
-﻿namespace Pizzaria.Domain.Entities
+﻿using Pizzaria.Core.Domain.Entities;
+
+namespace Pizzaria.Domain.Entities
 {
-    public class PerfilPermissao
+    public class PerfilPermissao : EntityBase
     {
         public int Id { get; private set; }
         public int PerfilId { get; private set; }

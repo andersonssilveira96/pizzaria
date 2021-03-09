@@ -1,17 +1,18 @@
 ﻿using FluentValidation.Results;
 using MediatR;
-using Pizzaria.Domain.Commands;
+using Pizzaria.Domain.Commands.Autenticacao;
 using Pizzaria.Domain.Factories;
 using Pizzaria.Domain.Interfaces.Repositories;
 using Pizzaria.Domain.Interfaces.Services;
-using Pizzaria.Domain.Response;
+using Pizzaria.Domain.Response.Autenticacao;
 using Pizzaria.Domain.Validators;
+using Pizzaria.Domain.Validators.Autenticacao;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace Pizzaria.Domain.Handlers.Commands
+namespace Pizzaria.Domain.Handlers.Commands.Autenticacao
 {
     public class AutenticacaoCommandHandler 
         : IRequestHandler<AutenticarCommand, AutenticarResponse>

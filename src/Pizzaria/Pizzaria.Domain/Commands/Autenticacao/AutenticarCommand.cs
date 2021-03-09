@@ -1,7 +1,8 @@
 ﻿using MediatR;
 using Pizzaria.Domain.Response;
+using Pizzaria.Domain.Response.Autenticacao;
 
-namespace Pizzaria.Domain.Commands
+namespace Pizzaria.Domain.Commands.Autenticacao
 {
     public class AutenticarCommand : IRequest<AutenticarResponse>
     {

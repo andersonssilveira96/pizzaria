@@ -1,4 +1,4 @@
-﻿namespace Pizzaria.Domain.Response
+﻿namespace Pizzaria.Domain.Response.Permissao
 {
     public class PermissaoResponse
     {

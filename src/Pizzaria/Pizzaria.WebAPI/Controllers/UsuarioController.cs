@@ -9,16 +9,16 @@ namespace Pizzaria.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [AllowAnonymous]
-    public class AutenticacaoController : BaseController
-    {      
-        public AutenticacaoController([FromServices]IMediator mediator)
+    [Authorize(Policy = "USR")]
+    public class UsuarioController : BaseController
+    {
+        public UsuarioController([FromServices]IMediator mediator) 
             : base(mediator)
         {
         }
 
-        [HttpPost]       
-        public async Task<IActionResult> Autenticar(AutenticarCommand command)
+        [HttpPost]
+        public async Task<IActionResult> Cadastrar(AutenticarCommand command)
         {
             var retorno = await _mediator.Send(command);
 
@@ -26,6 +26,6 @@ namespace Pizzaria.WebAPI.Controllers
                 return Ok(retorno);
             else
                 return BadRequest(retorno);
-        }       
+        }
     }
 }

@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using Pizzaria.Domain.Response.Permissao;
+using System.Collections.Generic;
 
-namespace Pizzaria.Domain.Response
+namespace Pizzaria.Domain.Response.Perfil
 {
     public class PerfilResponse
     {
