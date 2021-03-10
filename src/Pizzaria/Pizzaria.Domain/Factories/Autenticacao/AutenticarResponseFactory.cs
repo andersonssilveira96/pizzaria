@@ -4,7 +4,7 @@ using Pizzaria.Domain.Response.Perfil;
 using Pizzaria.Domain.Response.Permissao;
 using System.Linq;
 
-namespace Pizzaria.Domain.Factories
+namespace Pizzaria.Domain.Factories.Autenticacao
 {
     public static class AutenticarResponseFactory
     {

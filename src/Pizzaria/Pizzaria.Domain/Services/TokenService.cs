@@ -28,6 +28,10 @@ namespace Pizzaria.Domain.Services
                 claims.Add(new Claim(item.Permissao.Descricao, item.Permissao.Abreviacao));
             }
 
+            claims.Add(new Claim("Id", usuario.Id.ToString()));
+            claims.Add(new Claim("Nome", usuario.Nome));
+            claims.Add(new Claim("Email", usuario.Email.Valor));
+
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_config["Secret"]);
             var tokenDescriptor = new SecurityTokenDescriptor

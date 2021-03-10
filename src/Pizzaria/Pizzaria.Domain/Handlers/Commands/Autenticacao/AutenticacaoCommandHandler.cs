@@ -1,11 +1,10 @@
 ﻿using FluentValidation.Results;
 using MediatR;
 using Pizzaria.Domain.Commands.Autenticacao;
-using Pizzaria.Domain.Factories;
+using Pizzaria.Domain.Factories.Autenticacao;
 using Pizzaria.Domain.Interfaces.Repositories;
 using Pizzaria.Domain.Interfaces.Services;
 using Pizzaria.Domain.Response.Autenticacao;
-using Pizzaria.Domain.Validators;
 using Pizzaria.Domain.Validators.Autenticacao;
 using System.Collections.Generic;
 using System.Linq;

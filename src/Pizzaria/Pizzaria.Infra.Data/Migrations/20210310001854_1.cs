@@ -1,8 +1,9 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Pizzaria.Infra.Data.Data.Migrations
+namespace Pizzaria.Infra.Data.Migrations
 {
-    public partial class inicial : Migration
+    public partial class _1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +13,10 @@ namespace Pizzaria.Infra.Data.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Descricao = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Descricao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Ativo = table.Column<bool>(type: "bit", nullable: false),
+                    DataInclusao = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UsuarioInclusaoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,8 +29,11 @@ namespace Pizzaria.Infra.Data.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Abreviacao = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Descricao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Abreviacao = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Ativo = table.Column<bool>(type: "bit", nullable: false),
+                    DataInclusao = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UsuarioInclusaoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -39,11 +46,16 @@ namespace Pizzaria.Infra.Data.Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Nome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Sobrenome = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Senha = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PerfilId = table.Column<int>(type: "int", nullable: false)
+                    PerfilId = table.Column<int>(type: "int", nullable: false),
+                    Telefone = table.Column<int>(type: "int", nullable: false),
+                    DDD = table.Column<int>(type: "int", nullable: false),
+                    Ativo = table.Column<bool>(type: "bit", nullable: false, defaultValue: true),
+                    DataInclusao = table.Column<DateTime>(type: "datetime2", nullable: false, defaultValue: new DateTime(2021, 3, 9, 21, 18, 53, 967, DateTimeKind.Local).AddTicks(257)),
+                    UsuarioInclusaoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -53,7 +65,13 @@ namespace Pizzaria.Infra.Data.Data.Migrations
                         column: x => x.PerfilId,
                         principalTable: "Perfil",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
+                    table.ForeignKey(
+                        name: "FK_Usuario_Usuario_UsuarioInclusaoId",
+                        column: x => x.UsuarioInclusaoId,
+                        principalTable: "Usuario",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateTable(
@@ -63,7 +81,10 @@ namespace Pizzaria.Infra.Data.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PerfilId = table.Column<int>(type: "int", nullable: false),
-                    PermissaoId = table.Column<int>(type: "int", nullable: false)
+                    PermissaoId = table.Column<int>(type: "int", nullable: false),
+                    Ativo = table.Column<bool>(type: "bit", nullable: false),
+                    DataInclusao = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    UsuarioInclusaoId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,13 +94,13 @@ namespace Pizzaria.Infra.Data.Data.Migrations
                         column: x => x.PerfilId,
                         principalTable: "Perfil",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                     table.ForeignKey(
                         name: "FK_PerfilPermissao_Permissao_PermissaoId",
                         column: x => x.PermissaoId,
                         principalTable: "Permissao",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.NoAction);
                 });
 
             migrationBuilder.CreateIndex(
@@ -96,6 +117,11 @@ namespace Pizzaria.Infra.Data.Data.Migrations
                 name: "IX_Usuario_PerfilId",
                 table: "Usuario",
                 column: "PerfilId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Usuario_UsuarioInclusaoId",
+                table: "Usuario",
+                column: "UsuarioInclusaoId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

@@ -12,6 +12,7 @@ namespace Pizzaria.Domain.Commands.Usuario
         public int PerfilId { get; set; }
         public int Telefone { get; set; }
         public int DDD { get; set; }
+        public int UsuarioInclusaoId { get; set; }
         
     }
 }

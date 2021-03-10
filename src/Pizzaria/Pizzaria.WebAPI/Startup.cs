@@ -1,6 +1,8 @@
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -35,19 +37,30 @@ namespace Pizzaria.WebAPI
 
             services.Configure();
 
-            services.AddControllers();            
+            services.AddControllers(config =>
+            {
+                var policy = new AuthorizationPolicyBuilder()
+                                .RequireAuthenticatedUser()
+                                .Build();
+
+                config.Filters.Add(new AuthorizeFilter(policy));
+            });            
 
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Pizzaria.WebAPI", Version = "v1" });
             });
-
+            
             var assembly = AppDomain.CurrentDomain.Load("Pizzaria.Domain");
             services.AddMediatR(assembly);
-            
+
             // TODO
             // services.AddValidation(assembly);
 
+            // Adiciona as claims
+            services.AddJwtAuthorization();
+
+            // Adiciona as configurações do Token
             var key = Encoding.ASCII.GetBytes(Configuration["Secret"]);
             services.ConfigureAuthentication(key);
         }
@@ -68,7 +81,6 @@ namespace Pizzaria.WebAPI
             app.UseCors("CorsPolicy");
             app.UseAuthentication();
             app.UseAuthorization();
-            
 
             app.UseEndpoints(endpoints =>
             {

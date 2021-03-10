@@ -19,6 +19,11 @@ namespace Pizzaria.Infra.Data.Data.Repositories
         public Usuario Autenticar(AutenticarCommand usuarioCommand)
         {            
             return Procurar(x => x.Email.Valor == usuarioCommand.Email && x.Senha == usuarioCommand.Senha).FirstOrDefault();                      
-        }       
+        }
+
+        public bool VerificarEmailExistente(string email)
+        {
+            return Procurar(x => x.Email.Valor == email).Any();
+        }
     }
 }
