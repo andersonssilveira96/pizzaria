@@ -1,12 +1,10 @@
 ﻿using MediatR;
-using Pizzaria.Core.Domain.Response;
 using Pizzaria.Domain.Entities;
 using Pizzaria.Domain.Interfaces.Repositories;
 using Pizzaria.Domain.Queries.Usuario;
 using Pizzaria.Domain.Response.Perfil;
 using Pizzaria.Domain.Response.Permissao;
 using Pizzaria.Domain.Response.Usuario;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
@@ -50,7 +48,7 @@ namespace Pizzaria.Domain.Handlers.Queries
                 Email = usuario.Email.Valor,
                 Perfil = new PerfilResponse()
                 {
-                    PerfilId = usuario.PerfilId,
+                    Id = usuario.Perfil.Id,
                     Descricao = usuario.Perfil.Descricao,
                     Permissao = usuario.Perfil.PerfilPermissao.Select(ObterPermissao)
                 }
@@ -69,12 +67,11 @@ namespace Pizzaria.Domain.Handlers.Queries
                 Email = usuario.Email.Valor,
                 Perfil = new PerfilResponse()
                 {
-                    PerfilId = usuario.PerfilId,
+                    Id = usuario.PerfilId,
                     Descricao = usuario.Perfil.Descricao
                 }
             };
         }
-
         private static PermissaoResponse ObterPermissao(PerfilPermissao perfilPermissao)
         {
             return new PermissaoResponse()

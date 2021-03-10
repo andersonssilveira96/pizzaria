@@ -4,6 +4,7 @@ using Pizzaria.Domain.Interfaces.Services;
 using Pizzaria.Domain.Services;
 using Pizzaria.Infra.Data.Data.Context;
 using Pizzaria.Infra.Data.Data.Repositories;
+using Pizzaria.Infra.Data.Repositories;
 
 namespace Pizzaria.Infra.CrossCutting.IoC
 {
@@ -11,7 +12,8 @@ namespace Pizzaria.Infra.CrossCutting.IoC
     {
         public static void Configure(this IServiceCollection services)
         {
-            services.AddScoped<IUsuarioRepository, UsuarioRepository>();       
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>(); 
+            services.AddScoped<IPerfilRepository, PerfilRepository>();
             services.AddSingleton<ITokenService, TokenService>();
             services.AddDbContext<AutenticacaoContext>();
         }

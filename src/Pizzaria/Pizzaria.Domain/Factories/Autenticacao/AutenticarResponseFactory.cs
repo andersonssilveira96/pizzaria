@@ -19,7 +19,7 @@ namespace Pizzaria.Domain.Factories.Autenticacao
                 Sucesso = true,
                 Perfil = new PerfilResponse()
                 {
-                    PerfilId = usuario.PerfilId,
+                    Id = usuario.PerfilId,
                     Descricao = usuario.Perfil.Descricao,
                     Permissao = usuario.Perfil.PerfilPermissao.Select(ObterPermissao)
                 }

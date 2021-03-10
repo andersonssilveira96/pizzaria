@@ -1,15 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Net.Http.Headers;
 using Pizzaria.Core.API.Controller;
-using Pizzaria.Core.Domain.Response;
-using Pizzaria.Domain.Commands.Autenticacao;
 using Pizzaria.Domain.Commands.Usuario;
 using Pizzaria.Domain.Queries.Usuario;
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
