@@ -34,5 +34,19 @@ namespace Pizzaria.WebAPI.Controllers
             else
                 return BadRequest(retorno);
         }
+
+        [HttpPut]
+        [Route("{id:int}")]
+        public async Task<IActionResult> Atualizar(int id, AtualizarUsuarioCommand command)
+        {
+            command.Id = id;
+
+            var retorno = await _mediator.Send(command);
+
+            if (retorno.Sucesso)
+                return Ok(retorno);
+            else
+                return BadRequest(retorno);
+        }
     }
 }

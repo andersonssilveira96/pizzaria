@@ -19,6 +19,17 @@ namespace Pizzaria.Domain.Entities
             UsuarioInclusaoId = usuarioInclusaoId;
         }
 
+        public void Alterar(Email email, string nome, string sobreNome, string senha, int perfilId, int telefone, int ddd)
+        {            
+            Email = email;
+            Nome = nome;
+            Sobrenome = sobreNome;
+            Senha = senha;
+            Telefone = telefone;
+            DDD = ddd;
+            PerfilId = perfilId;
+        }
+
         protected Usuario()
         {
         }

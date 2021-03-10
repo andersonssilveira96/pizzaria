@@ -1,5 +1,6 @@
 ﻿using FluentValidation.Results;
 using MediatR;
+using Pizzaria.Core.Domain.ValueObjects;
 using Pizzaria.Domain.Commands.Usuario;
 using Pizzaria.Domain.Factories.Usuarios;
 using Pizzaria.Domain.Interfaces.Repositories;
@@ -13,8 +14,9 @@ using System.Threading.Tasks;
 
 namespace Pizzaria.Domain.Handlers.Commands.Usuario
 {
-    public class UsuarioCommandHandler
-        : IRequestHandler<CadastrarUsuarioCommand, CadastrarUsuarioResponse>
+    public class UsuarioCommandHandler :
+            IRequestHandler<CadastrarUsuarioCommand, CadastrarUsuarioResponse>,
+            IRequestHandler<AtualizarUsuarioCommand, AtualizarUsuarioResponse>
     {
         private readonly IUsuarioRepository _usuarioRepository;
         public UsuarioCommandHandler(IUsuarioRepository usuarioRepository)
@@ -37,6 +39,26 @@ namespace Pizzaria.Domain.Handlers.Commands.Usuario
             }
 
             return Task.FromResult(new CadastrarUsuarioResponse() { Sucesso = false, Mensagem = result.Errors.Select(x => x.ErrorMessage).ToList() });
+        }
+
+        public Task<AtualizarUsuarioResponse> Handle(AtualizarUsuarioCommand command, CancellationToken cancellationToken)
+        {
+            AtualizarUsuarioCommandValidator validator = new AtualizarUsuarioCommandValidator(_usuarioRepository);
+            ValidationResult result = validator.Validate(command);
+
+            if (result.IsValid)
+            {
+                var usuario = _usuarioRepository.ObterPorId(command.Id);
+                
+                usuario.Alterar(new Email(command.Email), command.Nome, command.Sobrenome, command.Senha, command.PerfilId, command.Telefone, command.DDD);
+
+                _usuarioRepository.Atualizar(usuario);
+                _usuarioRepository.Salvar();
+
+                return Task.FromResult(new AtualizarUsuarioResponse() { Sucesso = true, Mensagem = new List<string>() { "Usuário atualizado com sucesso" } });
+            }
+
+            return Task.FromResult(new AtualizarUsuarioResponse() { Sucesso = false, Mensagem = result.Errors.Select(x => x.ErrorMessage).ToList() });
         }
     }
 }

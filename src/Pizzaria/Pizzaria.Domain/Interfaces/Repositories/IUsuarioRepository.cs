@@ -8,6 +8,7 @@ namespace Pizzaria.Domain.Interfaces.Repositories
     public interface IUsuarioRepository : IRepository<Usuario>
     {
         Usuario Autenticar(AutenticarCommand usuarioCommand);
-        bool VerificarEmailExistente(string email);
+        bool VerificarEmailExistente(int usuarioId, string email);
+        bool VerificarUsuarioExistente(int usuarioId);
     }
 }
