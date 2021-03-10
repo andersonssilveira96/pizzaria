@@ -16,6 +16,11 @@ namespace Pizzaria.Domain.Validators.Usuario
         {
             _usuarioRepository = usuarioRepository;
 
+            RuleFor(e => e.Id)
+               .Must((Id) => {
+                   return usuarioRepository.VerificarUsuarioExistente(Id);
+               }).WithMessage("Não existe um usuário com esse Id");
+
             RuleFor(e => e.Nome)
               .NotEmpty().WithMessage("Nome é obrigatório")
               .MinimumLength(3).WithMessage("Nome possui mínimo de 3 caracteres")

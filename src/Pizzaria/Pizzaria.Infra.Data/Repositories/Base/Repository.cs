@@ -7,10 +7,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Pizzaria.Core.Domain.Entities;
 
 namespace Pizzaria.Infra.Data.Data.Repositories.Base
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : EntityBase
     {
         protected AutenticacaoContext Db;
         protected DbSet<T> DbSet;
@@ -56,7 +57,9 @@ namespace Pizzaria.Infra.Data.Data.Repositories.Base
 
         public void Remover(int id)
         {
-            DbSet.Remove(DbSet.Find(id));
+            var entity = ObterPorId(id);
+            entity.Ativo = false;
+            DbSet.Update(entity);
         }
 
         public int Salvar()

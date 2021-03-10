@@ -48,5 +48,17 @@ namespace Pizzaria.WebAPI.Controllers
             else
                 return BadRequest(retorno);
         }
+
+        [HttpDelete]
+        [Route("{id:int}")]
+        public async Task<IActionResult> Deletar(int id)
+        {            
+            var retorno = await _mediator.Send(new DeletarUsuarioCommand { Id = id });
+
+            if (retorno.Sucesso)
+                return Ok(retorno);
+            else
+                return BadRequest(retorno);
+        }
     }
 }

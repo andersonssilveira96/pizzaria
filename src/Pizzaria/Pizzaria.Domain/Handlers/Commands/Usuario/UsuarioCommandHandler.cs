@@ -16,7 +16,8 @@ namespace Pizzaria.Domain.Handlers.Commands.Usuario
 {
     public class UsuarioCommandHandler :
             IRequestHandler<CadastrarUsuarioCommand, CadastrarUsuarioResponse>,
-            IRequestHandler<AtualizarUsuarioCommand, AtualizarUsuarioResponse>
+            IRequestHandler<AtualizarUsuarioCommand, AtualizarUsuarioResponse>,
+            IRequestHandler<DeletarUsuarioCommand, DeletarUsuarioResponse>
     {
         private readonly IUsuarioRepository _usuarioRepository;
         public UsuarioCommandHandler(IUsuarioRepository usuarioRepository)
@@ -59,6 +60,22 @@ namespace Pizzaria.Domain.Handlers.Commands.Usuario
             }
 
             return Task.FromResult(new AtualizarUsuarioResponse() { Sucesso = false, Mensagem = result.Errors.Select(x => x.ErrorMessage).ToList() });
+        }
+
+        public Task<DeletarUsuarioResponse> Handle(DeletarUsuarioCommand command, CancellationToken cancellationToken)
+        {
+            DeletarUsuarioCommandValidator validator = new DeletarUsuarioCommandValidator(_usuarioRepository);
+            ValidationResult result = validator.Validate(command);
+
+            if (result.IsValid)
+            {              
+                _usuarioRepository.Remover(command.Id);
+                _usuarioRepository.Salvar();
+
+                return Task.FromResult(new DeletarUsuarioResponse() { Sucesso = true, Mensagem = new List<string>() { "Usuário deletado com sucesso" } });
+            }
+
+            return Task.FromResult(new DeletarUsuarioResponse() { Sucesso = false, Mensagem = result.Errors.Select(x => x.ErrorMessage).ToList() });
         }
     }
 }
