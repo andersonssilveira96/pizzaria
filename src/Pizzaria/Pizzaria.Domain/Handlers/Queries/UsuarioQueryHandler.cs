@@ -35,7 +35,7 @@ namespace Pizzaria.Domain.Handlers.Queries
             if (usuario != null)
                 return Task.FromResult(ToResponse(usuario));
             else
-                return Task.FromResult(new BaseUsuarioResponse() { Sucesso = false, Mensagem = new List<string>() { "Usuario não existe" } });
+                return null;
         }
 
         private BaseUsuarioResponse ToResponse(Usuario usuario) 

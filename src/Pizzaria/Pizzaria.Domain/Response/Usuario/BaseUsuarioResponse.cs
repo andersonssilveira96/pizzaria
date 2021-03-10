@@ -3,11 +3,11 @@ using Pizzaria.Domain.Response.Perfil;
 
 namespace Pizzaria.Domain.Response.Usuario
 {
-    public class BaseUsuarioResponse : BaseResponse
+    public class BaseUsuarioResponse 
     {
         public BaseUsuarioResponse()
         {
-            Sucesso = true;
+            
         }
         public int? Id { get; set; }
         public string Nome { get; set; }
