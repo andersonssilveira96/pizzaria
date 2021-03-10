@@ -47,7 +47,6 @@ namespace Pizzaria.WebAPI
             }).AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.IgnoreNullValues = true;
-                options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault;
             });           
 
             services.AddSwaggerGen(c =>
