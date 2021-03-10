@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Pizzaria.Domain.Commands.Autenticacao;
 using Pizzaria.Domain.Entities;
 using Pizzaria.Domain.Interfaces.Repositories;
@@ -29,6 +30,14 @@ namespace Pizzaria.Infra.Data.Data.Repositories
         public bool VerificarUsuarioExistente(int id)
         {
             return Procurar(x => x.Id == id).Any();
+        }
+        public override Usuario ObterPorId(int id)
+        {
+            return DbSet.Where(x => x.Id == id)
+                        .Include(x => x.Perfil)
+                            .ThenInclude(x => x.PerfilPermissao)
+                                .ThenInclude(x=> x.Permissao)
+                        .FirstOrDefault();
         }
     }
 }

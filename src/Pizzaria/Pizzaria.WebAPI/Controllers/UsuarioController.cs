@@ -5,6 +5,7 @@ using Microsoft.Net.Http.Headers;
 using Pizzaria.Core.API.Controller;
 using Pizzaria.Domain.Commands.Autenticacao;
 using Pizzaria.Domain.Commands.Usuario;
+using Pizzaria.Domain.Queries.Usuario;
 using System;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
@@ -20,6 +21,29 @@ namespace Pizzaria.WebAPI.Controllers
         public UsuarioController([FromServices]IMediator mediator) 
             : base(mediator)
         {
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ObterTodos()
+        {
+            var retorno = await _mediator.Send(new ListarUsuariosQuery());
+
+            if (retorno.Any())
+                return Ok(retorno);
+            else
+                return NoContent();
+        }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<IActionResult> ObterPorId(int id)
+        {
+            var retorno = await _mediator.Send(new ObterUsuarioQuery() { Id = id });
+
+            if (retorno.Sucesso)
+                return Ok(retorno);
+            else
+                return BadRequest(retorno);
         }
 
         [HttpPost]

@@ -20,4 +20,8 @@
     <ProjectReference Include="..\Pizzaria.Core.Domain\Pizzaria.Core.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Handlers\Events\" />
+  </ItemGroup>
+
 </Project>

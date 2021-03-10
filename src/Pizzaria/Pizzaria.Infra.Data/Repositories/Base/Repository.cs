@@ -35,7 +35,7 @@ namespace Pizzaria.Infra.Data.Data.Repositories.Base
 
             return obj;
         }      
-        public T ObterPorId(int id)
+        public virtual T ObterPorId(int id)
         {
             var returnObj = DbSet.Find(id);
 

@@ -11,7 +11,7 @@ using Pizzaria.Core.API.Startup;
 using Pizzaria.Infra.CrossCutting.IoC;
 using System;
 using System.Text;
-
+using System.Text.Json.Serialization;
 
 namespace Pizzaria.WebAPI
 {
@@ -44,7 +44,11 @@ namespace Pizzaria.WebAPI
                                 .Build();
 
                 config.Filters.Add(new AuthorizeFilter(policy));
-            });            
+            }).AddJsonOptions(options =>
+            {
+                options.JsonSerializerOptions.IgnoreNullValues = true;
+                options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingDefault;
+            });           
 
             services.AddSwaggerGen(c =>
             {
