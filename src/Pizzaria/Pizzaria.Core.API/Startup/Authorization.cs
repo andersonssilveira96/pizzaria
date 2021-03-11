@@ -14,7 +14,7 @@ namespace Pizzaria.Core.API.Startup
                 options.AddPolicy("Clientes", builder => { builder.RequireClaim("Clientes", "CLS"); });
                 options.AddPolicy("Preparos", builder => { builder.RequireClaim("Preparos", "PRS"); });
                 options.AddPolicy("Relatórios", builder => { builder.RequireClaim("Relatórios", "RLS"); });
-                options.AddPolicy("Adiministracao", builder => { builder.RequireClaim("Adiministracao", "ADM"); });
+                options.AddPolicy("Administracao", builder => { builder.RequireClaim("Administracao", "ADM"); });
                 options.AddPolicy("Usuarios", builder => { builder.RequireClaim("Usuarios", "USR"); });               
             });
         }

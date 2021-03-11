@@ -10,7 +10,7 @@ namespace Pizzaria.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Policy = "Adiministracao")]
+    [Authorize(Policy = "Administracao")]
     public class PerfilController : BaseController
     {
         public PerfilController([FromServices] IMediator mediator)
@@ -27,6 +27,18 @@ namespace Pizzaria.WebAPI.Controllers
                 return Ok(retorno);
             else
                 return NoContent();
+        }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<IActionResult> ObterPorId(int id)
+        {
+            var retorno = await _mediator.Send(new ObterPerfilQuery() { Id = id });
+
+            if (retorno != null)
+                return Ok(retorno);
+            else
+                return BadReponse("Perfil não existe");
         }
 
     }
