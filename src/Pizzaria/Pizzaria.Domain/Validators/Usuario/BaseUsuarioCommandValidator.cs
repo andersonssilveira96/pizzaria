@@ -17,9 +17,11 @@ namespace Pizzaria.Domain.Validators.Usuario
             _usuarioRepository = usuarioRepository;
 
             RuleFor(e => e.Id)
-               .Must((Id) => {
+               .Must((Id) =>
+               {
                    return usuarioRepository.VerificarUsuarioExistente(Id);
-               }).WithMessage("Não existe um usuário com esse Id");
+               }).WithMessage("Não existe um usuário com esse Id")
+               .When(e => e.Id > 0);
 
             RuleFor(e => e.Nome)
               .NotEmpty().WithMessage("Nome é obrigatório")
@@ -32,7 +34,7 @@ namespace Pizzaria.Domain.Validators.Usuario
               .MaximumLength(300).WithMessage("Sobrenome possui máximo de 300 caracteres");
 
             RuleFor(e => e.Telefone)
-                .GreaterThan(0).WithMessage("Telefone é obrigatório");
+                .GreaterThan(0).WithMessage("Telefone é obrigatório");          
 
             RuleFor(e => e.DDD)
               .GreaterThan(0).WithMessage("DDD é obrigatório");
