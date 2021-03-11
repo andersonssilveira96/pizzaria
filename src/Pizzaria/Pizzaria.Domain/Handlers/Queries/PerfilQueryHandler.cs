@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Pizzaria.Core.Domain.Response;
 using Pizzaria.Domain.Entities;
 using Pizzaria.Domain.Interfaces.Repositories;
 using Pizzaria.Domain.Queries.Perfil;
@@ -31,7 +32,7 @@ namespace Pizzaria.Domain.Handlers.Queries
             if (perfil != null)
                 return Task.FromResult(ToListResponseCompleto(perfil));
             else
-                return null;
+                return Task.FromResult(new PerfilCompletoResponse() { Sucesso = false });
         }
 
         private BasePerfilResponse ToListResponse(Perfil perfil)

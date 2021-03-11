@@ -3,7 +3,7 @@ using Pizzaria.Domain.Response.Perfil;
 
 namespace Pizzaria.Domain.Response.Usuario
 {
-    public class BaseUsuarioResponse 
+    public class BaseUsuarioResponse : BaseResponse
     {
         public BaseUsuarioResponse()
         {

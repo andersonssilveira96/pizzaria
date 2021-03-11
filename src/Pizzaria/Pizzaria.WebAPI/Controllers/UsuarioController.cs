@@ -36,7 +36,7 @@ namespace Pizzaria.WebAPI.Controllers
         {
             var retorno = await _mediator.Send(new ObterUsuarioQuery() { Id = id });
 
-            if (retorno != null)
+            if (retorno.Sucesso)
                 return Ok(retorno);
             else
                 return BadReponse("Usuario não existe");

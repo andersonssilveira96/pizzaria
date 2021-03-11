@@ -35,7 +35,7 @@ namespace Pizzaria.WebAPI.Controllers
         {
             var retorno = await _mediator.Send(new ObterPerfilQuery() { Id = id });
 
-            if (retorno != null)
+            if (retorno.Sucesso)
                 return Ok(retorno);
             else
                 return BadReponse("Perfil não existe");

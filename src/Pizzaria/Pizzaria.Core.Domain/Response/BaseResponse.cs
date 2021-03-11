@@ -10,6 +10,6 @@ namespace Pizzaria.Core.Domain.Response
             Sucesso = false;
         }
         public bool Sucesso { get; set; }
-        public List<string> Mensagem { get; set; }
+        public virtual List<string> Mensagem { get; set; }
     }
 }

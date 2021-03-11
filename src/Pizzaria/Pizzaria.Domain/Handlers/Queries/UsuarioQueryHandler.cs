@@ -33,7 +33,7 @@ namespace Pizzaria.Domain.Handlers.Queries
             if (usuario != null)
                 return Task.FromResult(ToResponse(usuario));
             else
-                return null;
+                return Task.FromResult(new BaseUsuarioResponse() { Sucesso = false });
         }
 
         private BaseUsuarioResponse ToResponse(Usuario usuario) 
