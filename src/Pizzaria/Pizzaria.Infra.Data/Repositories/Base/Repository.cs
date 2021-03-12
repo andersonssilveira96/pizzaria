@@ -13,9 +13,9 @@ namespace Pizzaria.Infra.Data.Data.Repositories.Base
 {
     public class Repository<T> : IRepository<T> where T : EntityBase
     {
-        protected AutenticacaoContext Db;
+        protected PizzariaContext Db;
         protected DbSet<T> DbSet;
-        public Repository([FromServices] AutenticacaoContext context)
+        public Repository([FromServices] PizzariaContext context)
         {
             Db = context;
             DbSet = Db.Set<T>();

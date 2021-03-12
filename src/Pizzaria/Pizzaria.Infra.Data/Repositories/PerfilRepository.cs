@@ -10,7 +10,7 @@ namespace Pizzaria.Infra.Data.Repositories
 {
     public class PerfilRepository : Repository<Perfil>, IPerfilRepository
     {
-        public PerfilRepository([FromServices] AutenticacaoContext context) : base(context)
+        public PerfilRepository([FromServices] PizzariaContext context) : base(context)
         {
         }
 
@@ -19,6 +19,16 @@ namespace Pizzaria.Infra.Data.Repositories
             return DbSet.Where(x => x.Id == id)
                         .Include(x => x.PerfilPermissao)
                         .FirstOrDefault();
+        }
+
+        public bool VerificarPerfilExistente(int id)
+        {
+            return Procurar(x => x.Id == id).Any();
+        }
+
+        public bool VerificarPerfilExistente(int id, string descricao)
+        {
+            return Procurar(x => x.Descricao == descricao && x.Id != id).Any();
         }
     }
 }

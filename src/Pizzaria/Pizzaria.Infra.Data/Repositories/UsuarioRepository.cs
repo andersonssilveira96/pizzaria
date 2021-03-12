@@ -12,7 +12,7 @@ namespace Pizzaria.Infra.Data.Data.Repositories
     public class UsuarioRepository : Repository<Usuario>, IUsuarioRepository
     {
     
-        public UsuarioRepository([FromServices] AutenticacaoContext context) 
+        public UsuarioRepository([FromServices] PizzariaContext context) 
             : base(context)
         {
         }

@@ -8,7 +8,7 @@ using Pizzaria.Infra.Data.Data.Context;
 
 namespace Pizzaria.Infra.Data.Migrations
 {
-    [DbContext(typeof(AutenticacaoContext))]
+    [DbContext(typeof(PizzariaContext))]
     partial class AutenticacaoContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

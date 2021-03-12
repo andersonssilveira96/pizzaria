@@ -14,7 +14,7 @@ namespace Pizzaria.Domain.Handlers.Queries
 {
     public class PerfilQueryHandler : 
         IRequestHandler<ListarPerfilQuery, IEnumerable<BasePerfilResponse>>,
-        IRequestHandler<ObterPerfilQuery, PerfilCompletoResponse>
+        IRequestHandler<ObterPerfilQuery, PerfilCompletoResponse>        
     {
         private readonly IPerfilRepository _perfilRepository;
         public PerfilQueryHandler(IPerfilRepository perfilRepository)

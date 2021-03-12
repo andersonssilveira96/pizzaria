@@ -9,7 +9,7 @@ using Pizzaria.Infra.Data.Data.Context;
 
 namespace Pizzaria.Infra.Data.Migrations
 {
-    [DbContext(typeof(AutenticacaoContext))]
+    [DbContext(typeof(PizzariaContext))]
     [Migration("20210310001854_1")]
     partial class _1
     {

@@ -5,7 +5,7 @@ using Pizzaria.Domain.Entities;
 
 namespace Pizzaria.Infra.Data.Data.Context
 {
-    public class AutenticacaoContext : DbContext
+    public class PizzariaContext : DbContext
     {
         private readonly IConfiguration _configuration;
 
@@ -14,7 +14,7 @@ namespace Pizzaria.Infra.Data.Data.Context
         public DbSet<PerfilPermissao> PerfilPermissao { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
 
-        public AutenticacaoContext(IConfiguration configuration)
+        public PizzariaContext(IConfiguration configuration)
         {
             _configuration = configuration;
         }
@@ -29,7 +29,7 @@ namespace Pizzaria.Infra.Data.Data.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AutenticacaoContext).Assembly);           
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(PizzariaContext).Assembly);           
         }
     }
 }
