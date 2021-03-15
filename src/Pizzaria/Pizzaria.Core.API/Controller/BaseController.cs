@@ -2,12 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Pizzaria.Core.Domain.Response;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
 
 namespace Pizzaria.Core.API.Controller
 {
@@ -49,14 +46,7 @@ namespace Pizzaria.Core.API.Controller
         }
 
         protected IActionResult OkResponse(IEnumerable<BaseResponse> response)
-        {     
-
-            foreach (var item in response)
-            {
-                item.Sucesso = null;
-                item.Mensagem = null;
-            }
-                        
+        {                        
             return Ok(response);
         }
     }
