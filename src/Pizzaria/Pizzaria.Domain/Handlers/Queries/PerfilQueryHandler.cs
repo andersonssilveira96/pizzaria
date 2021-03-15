@@ -1,13 +1,9 @@
 ﻿using AutoMapper;
 using MediatR;
-using Pizzaria.Core.Domain.Response;
-using Pizzaria.Domain.Entities;
 using Pizzaria.Domain.Interfaces.Repositories;
 using Pizzaria.Domain.Queries.Perfil;
 using Pizzaria.Domain.Response.Perfil;
-using Pizzaria.Domain.Response.Permissao;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
