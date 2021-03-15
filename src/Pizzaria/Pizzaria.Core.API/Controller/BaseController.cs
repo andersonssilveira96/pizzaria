@@ -66,13 +66,9 @@ namespace Pizzaria.Core.API.Controller
                 {
                     object child = c.GetValue(p);
 
-                    if (c.PropertyType == typeof(bool?) || c.PropertyType == typeof(List<string>))
-                    {
-                        if (string.Equals(c.Name, "Sucesso"))                          
-                                c.SetValue(p, null);
-
-                        if (string.Equals(c.Name, "Mensagem"))                          
-                                c.SetValue(p, null);
+                    if (!c.PropertyType.IsClass && c.Name == "Sucesso" || c.Name == "Mensagem")
+                    {                                          
+                        c.SetValue(p, null);
                     }
                     else
                     {
