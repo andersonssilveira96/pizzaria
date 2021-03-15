@@ -22,7 +22,7 @@ namespace Pizzaria.WebAPI.Controllers
         {
             var retorno = await _mediator.Send(command);
 
-            if (retorno.Sucesso)
+            if (retorno.Sucesso.HasValue)
                 return Ok(retorno);
             else
                 return BadRequest(retorno);

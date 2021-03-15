@@ -25,7 +25,7 @@ namespace Pizzaria.WebAPI.Controllers
             var retorno = await _mediator.Send(new ListarPerfilQuery());
 
             if (retorno.Any())
-                return Ok(retorno);
+                return OkResponse(retorno);
             else
                 return NoContent();
         }
@@ -36,10 +36,10 @@ namespace Pizzaria.WebAPI.Controllers
         {
             var retorno = await _mediator.Send(new ObterPerfilQuery() { Id = id });
 
-            if (retorno.Sucesso)
-                return Ok(retorno);
+            if (retorno.Sucesso.Value)
+                return OkResponse(retorno);
             else
-                return BadReponse("Perfil não existe");
+                return BadResponse("Perfil não existe");
         }
 
         [HttpPost]
@@ -49,10 +49,10 @@ namespace Pizzaria.WebAPI.Controllers
 
             var retorno = await _mediator.Send(command);
 
-            if (retorno.Sucesso)
-                return Ok(retorno);
+            if (retorno.Sucesso.Value)
+                return OkResponse(retorno);
             else
-                return BadReponse(retorno);
+                return BadResponse(retorno);
         }
 
         [HttpPut]
@@ -63,10 +63,10 @@ namespace Pizzaria.WebAPI.Controllers
 
             var retorno = await _mediator.Send(command);
 
-            if (retorno.Sucesso)
-                return Ok(retorno);
+            if (retorno.Sucesso.Value)
+                return OkResponse(retorno);
             else
-                return BadReponse(retorno);
+                return BadResponse(retorno);
         }
 
         [HttpDelete]
@@ -75,10 +75,10 @@ namespace Pizzaria.WebAPI.Controllers
         {
             var retorno = await _mediator.Send(new DeletarPerfilCommand { Id = id });
 
-            if (retorno.Sucesso)
-                return Ok(retorno);
+            if (retorno.Sucesso.Value)
+                return OkResponse(retorno);
             else
-                return BadReponse(retorno);
+                return BadResponse(retorno);
         }
     }
 }

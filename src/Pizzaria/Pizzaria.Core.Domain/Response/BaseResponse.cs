@@ -9,7 +9,7 @@ namespace Pizzaria.Core.Domain.Response
             Mensagem = new List<string>();
             Sucesso = true;
         }
-        public bool Sucesso { get; set; }
+        public bool? Sucesso { get; set; }
         public virtual List<string> Mensagem { get; set; }
     }
 }
