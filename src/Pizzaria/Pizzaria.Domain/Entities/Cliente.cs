@@ -1,0 +1,37 @@
+﻿using Pizzaria.Core.Domain.Entities;
+using Pizzaria.Core.Domain.ValueObjects;
+
+namespace Pizzaria.Domain.Entities
+{
+    public class Cliente : EntityBase
+    {
+        protected Cliente()
+        {
+        }
+
+        public Cliente(CPF cpf, Email email, string nome, int ddd, int telefone, int usuarioInclusaoId)
+        {
+            CPF = cpf;
+            Email = email;
+            Nome = nome;
+            DDD = ddd;
+            Telefone = telefone;
+            UsuarioInclusaoId = usuarioInclusaoId;
+        }
+
+        public void Alterar(CPF cpf, Email email, string nome, int ddd, int telefone)
+        {
+            CPF = cpf;
+            Email = email;
+            Nome = nome;
+            DDD = ddd;
+            Telefone = telefone;
+        }
+
+        public CPF CPF { get; private set; }
+        public Email Email { get; private set; }
+        public string Nome { get; private set; }
+        public int DDD { get; private set; }
+        public int Telefone { get; private set; }
+    }
+}
