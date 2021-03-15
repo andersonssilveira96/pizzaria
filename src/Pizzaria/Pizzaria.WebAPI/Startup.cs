@@ -63,9 +63,12 @@ namespace Pizzaria.WebAPI
             // Adiciona as claims
             services.AddJwtAuthorization();
 
+            // Adiciona automapper
+            services.AddMapperConfiguration();
+
             // Adiciona as configurações do Token
             var key = Encoding.ASCII.GetBytes(Configuration["Secret"]);
-            services.ConfigureAuthentication(key);
+            services.ConfigureAuthentication(key);           
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

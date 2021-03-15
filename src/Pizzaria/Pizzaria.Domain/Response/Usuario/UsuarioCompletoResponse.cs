@@ -3,9 +3,9 @@ using Pizzaria.Domain.Response.Perfil;
 
 namespace Pizzaria.Domain.Response.Usuario
 {
-    public class BaseUsuarioResponse : BaseResponse
+    public class UsuarioCompletoResponse : BaseResponse
     {
-        public BaseUsuarioResponse()
+        public UsuarioCompletoResponse()
         {
             
         }
@@ -15,6 +15,6 @@ namespace Pizzaria.Domain.Response.Usuario
         public string Email { get; set; }
         public int? Telefone { get; set; }
         public int? DDD { get; set; }
-        public BasePerfilResponse Perfil { get; set; }
+        public PerfilCompletoResponse Perfil { get; set; }
     }
 }

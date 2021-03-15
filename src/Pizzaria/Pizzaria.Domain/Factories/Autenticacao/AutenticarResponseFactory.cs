@@ -17,7 +17,7 @@ namespace Pizzaria.Domain.Factories.Autenticacao
                 Email = usuario.Email.Valor,
                 Token = token,
                 Sucesso = true,
-                Perfil = new PerfilResponse()
+                Perfil = new PerfilCompletoResponse()
                 {
                     Id = usuario.PerfilId,
                     Descricao = usuario.Perfil.Descricao,

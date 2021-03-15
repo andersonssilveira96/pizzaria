@@ -1,4 +1,5 @@
-﻿using MediatR;
+﻿using AutoMapper;
+using MediatR;
 using Pizzaria.Core.Domain.Response;
 using Pizzaria.Domain.Entities;
 using Pizzaria.Domain.Interfaces.Repositories;
@@ -17,50 +18,25 @@ namespace Pizzaria.Domain.Handlers.Queries
         IRequestHandler<ObterPerfilQuery, PerfilCompletoResponse>        
     {
         private readonly IPerfilRepository _perfilRepository;
-        public PerfilQueryHandler(IPerfilRepository perfilRepository)
+        private readonly IMapper _mapper;
+        public PerfilQueryHandler(IPerfilRepository perfilRepository, IMapper mapper)
         {
             _perfilRepository = perfilRepository;
+            _mapper = mapper;
         }
         public Task<IEnumerable<BasePerfilResponse>> Handle(ListarPerfilQuery query, CancellationToken cancellationToken)
         {
-            return Task.FromResult(_perfilRepository.ObterTodos().Select(ToListResponse));
+            var retorno = _perfilRepository.ObterTodos();
+            return Task.FromResult(_mapper.Map<IEnumerable<BasePerfilResponse>>(retorno));
         }
         public Task<PerfilCompletoResponse> Handle(ObterPerfilQuery query, CancellationToken cancellationToken)
         {
             var perfil = _perfilRepository.ObterPorId(query.Id);
 
             if (perfil != null)
-                return Task.FromResult(ToListResponseCompleto(perfil));
+                return Task.FromResult(_mapper.Map<PerfilCompletoResponse>(perfil));
             else
                 return Task.FromResult(new PerfilCompletoResponse() { Sucesso = false });
-        }
-
-        private BasePerfilResponse ToListResponse(Perfil perfil)
-        {
-            return new BasePerfilResponse()
-            {
-                Id = perfil.Id,
-                Descricao = perfil.Descricao                
-            };
-        }
-
-        private PerfilCompletoResponse ToListResponseCompleto(Perfil perfil)
-        {
-            return new PerfilCompletoResponse()
-            {
-                Id = perfil.Id,
-                Descricao = perfil.Descricao,
-                Permissao = perfil.PerfilPermissao.Select(ObterPermissao)
-            };
-        }
-
-        private static PermissaoResponse ObterPermissao(PerfilPermissao perfilPermissao)
-        {
-            return new PermissaoResponse()
-            {
-                Abreviacao = perfilPermissao.Permissao.Abreviacao,
-                Descricao = perfilPermissao.Permissao.Descricao
-            };
-        }
+        }       
     }
 }
