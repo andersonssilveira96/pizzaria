@@ -24,7 +24,7 @@ namespace Pizzaria.WebAPI.Controllers
             var retorno = await _mediator.Send(new ListarPermissaoQuery());
 
             if (retorno.Any())
-                return OkResponse(retorno);
+                return Ok(retorno);
             else
                 return NoContent();
         }

@@ -35,45 +35,6 @@ namespace Pizzaria.Core.API.Controller
         protected IActionResult BadResponse(BaseResponse response)
         {
             return BadRequest(response);
-        }
-
-        protected IActionResult OkResponse(BaseResponse response)
-        {
-            ChangeValueOkResult(response);
-
-            return Ok(response);
-        }
-
-        protected IActionResult OkResponse(IEnumerable<BaseResponse> response)
-        {             
-            foreach(var item in response)
-            {
-                ChangeValueOkResult(item);
-            }
-
-            return Ok(response);
-        }
-
-        private void ChangeValueOkResult(object p)
-        {
-            Type t = p.GetType();
-            t.GetProperties()
-                .Where(c => c.PropertyType.IsClass || c.Name == "Sucesso" || c.Name == "Mensagem")
-                .ToList()
-                .ForEach(c =>
-                {
-                    object child = c.GetValue(p);
-
-                    if (!c.PropertyType.IsClass && c.Name == "Sucesso" || c.Name == "Mensagem")
-                    {                                          
-                        c.SetValue(p, null);
-                    }
-                    else
-                    {
-                        if (child != null)
-                            ChangeValueOkResult(c.GetValue(p));
-                    }
-                });
-        }
+        }                   
     }
 }

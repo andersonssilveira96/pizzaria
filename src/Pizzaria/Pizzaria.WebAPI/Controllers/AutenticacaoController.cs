@@ -22,8 +22,8 @@ namespace Pizzaria.WebAPI.Controllers
         {
             var retorno = await _mediator.Send(command);
 
-            if (retorno.Sucesso.Value)
-                return OkResponse(retorno);
+            if (!retorno.Sucesso.HasValue)
+                return Ok(retorno);
             else
                 return BadResponse(retorno);
         }       

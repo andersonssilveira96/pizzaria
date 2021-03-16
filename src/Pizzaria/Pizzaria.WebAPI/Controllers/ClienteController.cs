@@ -25,7 +25,7 @@ namespace Pizzaria.WebAPI.Controllers
             var retorno = await _mediator.Send(new ListarClienteQuery() { Nome = nome, Telefone = telefone, CPF = cpf });
 
             if (retorno.Any())
-                return OkResponse(retorno);
+                return Ok(retorno);
             else
                 return NoContent();
         }
@@ -36,8 +36,8 @@ namespace Pizzaria.WebAPI.Controllers
         {
             var retorno = await _mediator.Send(new ObterClienteQuery() { Id = id });
 
-            if (retorno.Sucesso.Value)
-                return OkResponse(retorno);
+            if (!retorno.Sucesso.HasValue)
+                return Ok(retorno);
             else
                 return BadResponse("Usuario não existe");
         }
@@ -50,7 +50,7 @@ namespace Pizzaria.WebAPI.Controllers
 
             var retorno = await _mediator.Send(command);
 
-            if (retorno.Sucesso.Value)
+            if (!retorno.Sucesso.HasValue)
                 return Ok(retorno);
             else
                 return BadResponse(retorno);
@@ -64,7 +64,7 @@ namespace Pizzaria.WebAPI.Controllers
 
             var retorno = await _mediator.Send(command);
 
-            if (retorno.Sucesso.Value)
+            if (!retorno.Sucesso.HasValue)
                 return Ok(retorno);
             else
                 return BadResponse(retorno);
@@ -76,7 +76,7 @@ namespace Pizzaria.WebAPI.Controllers
         {
             var retorno = await _mediator.Send(new DeletarClienteCommand { Id = id });
 
-            if (retorno.Sucesso.Value)
+            if (!retorno.Sucesso.HasValue)
                 return Ok(retorno);
             else
                 return BadResponse(retorno);
