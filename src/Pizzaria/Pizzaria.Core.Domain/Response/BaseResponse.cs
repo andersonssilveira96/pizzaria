@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Text.Json.Serialization;
 
 namespace Pizzaria.Core.Domain.Response
 {
@@ -6,10 +7,14 @@ namespace Pizzaria.Core.Domain.Response
     {
         public BaseResponse()
         {
-            Mensagem = null;
-            Sucesso = null;
+            Mensagem = new List<string>();
+            Sucesso = true;
         }
-        public bool? Sucesso { get; set; }
+
+        [JsonIgnore]
+        public bool Sucesso { get; set; }
+
+        [JsonIgnore]
         public virtual List<string> Mensagem { get; set; }
     }
 }

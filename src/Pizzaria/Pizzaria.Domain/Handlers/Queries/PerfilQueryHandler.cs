@@ -32,7 +32,7 @@ namespace Pizzaria.Domain.Handlers.Queries
             if (perfil != null)
                 return Task.FromResult(_mapper.Map<PerfilCompletoResponse>(perfil));
             else
-                return Task.FromResult(new PerfilCompletoResponse() { Sucesso = false });
+                return Task.FromResult(new PerfilCompletoResponse() { Sucesso = false, Mensagem = new List<string>() { "Perfil não encontrado" } });
         }       
     }
 }

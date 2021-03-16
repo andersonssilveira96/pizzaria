@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Reflection;
 
 namespace Pizzaria.Core.API.Controller
 {
@@ -25,42 +24,17 @@ namespace Pizzaria.Core.API.Controller
 
         protected IActionResult BadResponse(string mensagem)
         {
-            return BadRequest(new BaseResponse() { Sucesso = false, Mensagem = new List<string>() { mensagem } });
+            return BadRequest(new { Sucesso = false, Mensagem = new List<string>() { mensagem } });
         }
 
         protected IActionResult BadResponse(List<string> mensagem)
         {
-            return BadRequest(new BaseResponse() { Sucesso = false, Mensagem = mensagem });
+            return BadRequest(new { Sucesso = false, Mensagem = mensagem });
         }
 
         protected IActionResult BadResponse(BaseResponse response)
         {
-            return BadRequest(response);
-        }
-
-        protected IActionResult OkResponse(BaseResponse response)
-        {
-            ChangeValueOkResult(response);
-
-            return Ok(response);
-        }
-
-        protected IActionResult OkResponse(IEnumerable<BaseResponse> response)
-        {             
-            foreach(var item in response)
-            {
-                ChangeValueOkResult(item);
-            }
-
-            return Ok(response);
-        }
-
-        private void ChangeValueOkResult(object p)
-        {
-            // Get Type object of MyClass.
-            Type myType = p.GetType();
-            // Get the PropertyInfo by passing the property name and specifying the BindingFlags.
-            PropertyInfo myPropInfo = myType.GetProperty("MyProperty", BindingFlags.Public | BindingFlags.Instance);
-        }
+            return BadRequest(new { Sucesso = response.Sucesso, Mensagem = response.Mensagem });
+        }          
     }
 }

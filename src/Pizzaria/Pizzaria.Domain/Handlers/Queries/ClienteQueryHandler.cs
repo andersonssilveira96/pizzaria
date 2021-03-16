@@ -23,7 +23,11 @@ namespace Pizzaria.Domain.Handlers.Queries
         public Task<ClienteCompletoResponse> Handle(ObterClienteQuery query, CancellationToken cancellationToken)
         {
             var retorno = _clienteRepository.ObterPorId(query.Id);
-            return Task.FromResult(_mapper.Map<ClienteCompletoResponse>(retorno));
+
+            if (retorno != null)
+                return Task.FromResult(_mapper.Map<ClienteCompletoResponse>(retorno));
+            else
+                return Task.FromResult(new ClienteCompletoResponse() { Sucesso = false, Mensagem = new List<string>() { "Cliente não encontrado" } });            
         }
 
         public Task<IEnumerable<BaseClienteResponse>> Handle(ListarClienteQuery query, CancellationToken cancellationToken)

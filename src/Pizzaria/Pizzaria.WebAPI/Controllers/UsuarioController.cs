@@ -36,10 +36,10 @@ namespace Pizzaria.WebAPI.Controllers
         {
             var retorno = await _mediator.Send(new ObterUsuarioQuery() { Id = id });
 
-            if (!retorno.Sucesso.HasValue)
+            if (retorno.Sucesso)
                 return Ok(retorno);
             else
-                return BadResponse("Usuario não existe");
+                return BadResponse(retorno);
         }
 
         [HttpPost]
@@ -49,7 +49,7 @@ namespace Pizzaria.WebAPI.Controllers
 
             var retorno = await _mediator.Send(command);
 
-            if (!retorno.Sucesso.HasValue)
+            if (retorno.Sucesso)
                 return Ok(retorno);
             else
                 return BadResponse(retorno);
@@ -63,7 +63,7 @@ namespace Pizzaria.WebAPI.Controllers
 
             var retorno = await _mediator.Send(command);
 
-            if (!retorno.Sucesso.HasValue)
+            if (retorno.Sucesso)
                 return Ok(retorno);
             else
                 return BadResponse(retorno);
@@ -75,7 +75,7 @@ namespace Pizzaria.WebAPI.Controllers
         {            
             var retorno = await _mediator.Send(new DeletarUsuarioCommand { Id = id });
 
-            if (!retorno.Sucesso.HasValue)
+            if (retorno.Sucesso)
                 return Ok(retorno);
             else
                 return BadResponse(retorno);

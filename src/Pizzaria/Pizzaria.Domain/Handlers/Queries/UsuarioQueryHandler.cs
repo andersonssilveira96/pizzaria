@@ -33,7 +33,7 @@ namespace Pizzaria.Domain.Handlers.Queries
             if (usuario != null)
                 return Task.FromResult(_mapper.Map<UsuarioCompletoResponse>(usuario));
             else
-                return Task.FromResult(new UsuarioCompletoResponse() { Sucesso = false });
+                return Task.FromResult(new UsuarioCompletoResponse() { Sucesso = false, Mensagem = new List<string>() { "Usuário não encontrado" } });
         }       
     }
 }
