@@ -12,11 +12,13 @@ namespace Pizzaria.Infra.CrossCutting.IoC
     {
         public static void Configure(this IServiceCollection services)
         {
+            // Repository
             services.AddScoped<IUsuarioRepository, UsuarioRepository>(); 
             services.AddScoped<IPerfilRepository, PerfilRepository>();
             services.AddScoped<IPerfilPermissaoRepository, PerfilPermissaoRepository>();
             services.AddScoped<IPermissaoRepository, PermissaoRepository>();
-
+            services.AddScoped<IClienteRepository, ClienteRepository>();
+          
             services.AddSingleton<ITokenService, TokenService>();
             services.AddDbContext<PizzariaContext>();
         }

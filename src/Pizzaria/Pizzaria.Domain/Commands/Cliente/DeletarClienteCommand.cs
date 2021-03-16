@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Pizzaria.Domain.Commands.Cliente
 {
-    class DeletarClienteCommand
+    public class DeletarClienteCommand 
     {
     }
 }

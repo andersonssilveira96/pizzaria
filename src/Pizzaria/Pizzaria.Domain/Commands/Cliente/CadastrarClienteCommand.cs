@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using Pizzaria.Domain.Response.Cliente;
 
 namespace Pizzaria.Domain.Commands.Cliente
 {
-    class CadastrarClienteCommand
+    public class CadastrarClienteCommand : BaseClienteCommand, IRequest<CadastrarClienteResponse>
     {
     }
 }
