@@ -9,7 +9,7 @@ namespace Pizzaria.Domain.Entities
         {
         }
 
-        public Cliente(CPF cpf, Email email, string nome, int ddd, int telefone, int usuarioInclusaoId)
+        public Cliente(CPF cpf, Email email, string nome, int ddd, int telefone, int usuarioInclusaoId, Endereco endereco)
         {
             CPF = cpf;
             Email = email;
@@ -17,6 +17,7 @@ namespace Pizzaria.Domain.Entities
             DDD = ddd;
             Telefone = telefone;
             UsuarioInclusaoId = usuarioInclusaoId;
+            Endereco = endereco;
         }
 
         public void Alterar(CPF cpf, Email email, string nome, int ddd, int telefone)

@@ -2,11 +2,9 @@
 using Microsoft.AspNetCore.Mvc;
 using Pizzaria.Core.Domain.Response;
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
-using System.Reflection;
 
 namespace Pizzaria.Core.API.Controller
 {

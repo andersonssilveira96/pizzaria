@@ -2,9 +2,9 @@
 
 namespace Pizzaria.Domain.Entities
 {
-    public class Endereco 
+    public class Endereco : EntityBase
     {
-        public Endereco(string rua, int numero, string complemento, string bairro, string cidade, string estado, int cep, int clienteId)
+        public Endereco(string rua, int numero, string complemento, string bairro, string cidade, string estado, int cep)
         {
             Rua = rua;
             Numero = numero;
@@ -12,8 +12,7 @@ namespace Pizzaria.Domain.Entities
             Bairro = bairro;
             Cidade = cidade;
             Estado = estado;
-            CEP = cep;
-            ClienteId = clienteId;
+            CEP = cep;            
         }
         protected Endereco()
         {

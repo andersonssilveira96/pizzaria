@@ -18,7 +18,8 @@ namespace Pizzaria.Infra.CrossCutting.IoC
             services.AddScoped<IPerfilPermissaoRepository, PerfilPermissaoRepository>();
             services.AddScoped<IPermissaoRepository, PermissaoRepository>();
             services.AddScoped<IClienteRepository, ClienteRepository>();
-          
+            services.AddScoped<IEnderecoRepository, EnderecoRepository>();
+
             services.AddSingleton<ITokenService, TokenService>();
             services.AddDbContext<PizzariaContext>();
         }
