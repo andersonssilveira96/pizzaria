@@ -9,6 +9,7 @@ namespace Pizzaria.Domain.Interfaces.Repositories
     {
         bool VerificarClienteExistente(int id);
         bool VerificarEmailExistente(int id, string email);
+        bool VerificarCPFExistente(int id, string cpf);
         IEnumerable<Cliente> ObterTodos(ListarClienteQuery query);
     }
 }

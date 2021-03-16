@@ -21,6 +21,11 @@ namespace Pizzaria.Infra.Data.Repositories
             return Procurar(x => x.Email.Valor == email && x.Id != id).Any();
         }
 
+        public bool VerificarCPFExistente(int id, string cpf)
+        {
+            return Procurar(x => x.CPF.Valor == cpf && x.Id != id).Any();
+        }
+
         public bool VerificarClienteExistente(int id)
         {
             return Procurar(x => x.Id == id).Any();

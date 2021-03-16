@@ -26,7 +26,11 @@ namespace Pizzaria.Domain.Validators.Cliente
               .MinimumLength(3).WithMessage("Nome possui mínimo de 3 caracteres")
               .MaximumLength(300).WithMessage("Nome possui máximo de 300 caracteres");
 
-            RuleFor(e => e.CPF).IsValidCPF();
+            RuleFor(e => e.CPF)
+                .IsValidCPF()
+                .Must((cliente, cpf) => {
+                     return !_clienteRepository.VerificarCPFExistente(cliente.Id, cpf);
+                }).WithMessage("Já contém um cliente com esse CPF cadastrado"); 
 
             RuleFor(e => e.Telefone)
                 .GreaterThan(0).WithMessage("Telefone é obrigatório");

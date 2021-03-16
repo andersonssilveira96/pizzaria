@@ -20,9 +20,9 @@ namespace Pizzaria.WebAPI.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ObterTodos(int? telefone, string nome)
+        public async Task<IActionResult> ObterTodos(int? telefone, string nome, string cpf)
         {
-            var retorno = await _mediator.Send(new ListarClienteQuery() { Nome = nome, Telefone = telefone });
+            var retorno = await _mediator.Send(new ListarClienteQuery() { Nome = nome, Telefone = telefone, CPF = cpf });
 
             if (retorno.Any())
                 return OkResponse(retorno);
