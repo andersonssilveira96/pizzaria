@@ -9,6 +9,7 @@
         public string Bairro { get; set; }
         public string Cidade { get; set; }
         public string Estado { get; set; }
-        public int CEP { get; set; }
+        public string CEP { get; set; }
+        public int UsuarioInclusaoId { get; set; }
     }
 }

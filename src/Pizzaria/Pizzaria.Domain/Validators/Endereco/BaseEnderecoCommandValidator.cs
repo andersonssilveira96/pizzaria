@@ -27,7 +27,9 @@ namespace Pizzaria.Domain.Validators.Endereco
               .MaximumLength(300).WithMessage("Cidade possui máximo de 300 caracteres");
 
             RuleFor(e => e.CEP)
-                .GreaterThan(0).WithMessage("CEP é obrigatório");
+              .NotEmpty().WithMessage("CEP é obrigatório")
+              .MinimumLength(8).WithMessage("CEP possui mínimo de 8 caracteres")
+              .MaximumLength(8).WithMessage("CEP possui máximo de 8 caracteres");
 
             RuleFor(e => e.Numero)
               .GreaterThan(0).WithMessage("Numero é obrigatório");
@@ -39,8 +41,8 @@ namespace Pizzaria.Domain.Validators.Endereco
 
             RuleFor(e => e.Estado)
                .NotEmpty().WithMessage("Estado é obrigatório")
-               .MinimumLength(3).WithMessage("Estado possui mínimo de 3 caracteres")
-               .MaximumLength(300).WithMessage("Estado possui máximo de 300 caracteres");
+               .MinimumLength(2).WithMessage("Estado possui mínimo de 2 caracteres")
+               .MaximumLength(2).WithMessage("Estado possui máximo de 2 caracteres");
 
         }
     }

@@ -21,7 +21,7 @@ namespace Pizzaria.Domain.Factories.Clientes
 
         private static Endereco Criar(BaseEnderecoCommand command)
         {
-            return new Endereco(command.Rua, command.Numero, command.Complemento, command.Bairro, command.Cidade, command.Estado, command.CEP);
+            return new Endereco(command.Rua, command.Numero, command.Complemento, command.Bairro, command.Cidade, command.Estado, command.CEP, command.UsuarioInclusaoId);
         }
     }
 }

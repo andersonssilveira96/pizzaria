@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using MediatR;
+using Pizzaria.Domain.Response.Cliente;
 
 namespace Pizzaria.Domain.Commands.Cliente
 {
-    public class DeletarClienteCommand 
+    public class DeletarClienteCommand : IRequest<DeletarClienteResponse>
     {
+        public int Id { get; set; }
     }
 }

@@ -5,9 +5,8 @@ namespace Pizzaria.Domain.Validators.Cliente
 {
     public class CadastrarClienteCommandValidator : BaseClienteCommandValidator
     {
-        public CadastrarClienteCommandValidator(IClienteRepository clienteRepository, IEnderecoRepository enderecoRepository) : base(clienteRepository)
+        public CadastrarClienteCommandValidator(IClienteRepository clienteRepository, IEnderecoRepository enderecoRepository) : base(clienteRepository, enderecoRepository)
         {
-            RuleFor(cliente => cliente.Endereco).SetValidator(new CadastrarEnderecoCommandValidator(enderecoRepository));
         }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pizzaria.Infra.Data.Data.Context;
 
 namespace Pizzaria.Infra.Data.Migrations
 {
     [DbContext(typeof(PizzariaContext))]
-    partial class AutenticacaoContextModelSnapshot : ModelSnapshot
+    [Migration("20210316022323_cliente-endereco-novo-2")]
+    partial class clienteendereconovo2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,7 +39,10 @@ namespace Pizzaria.Infra.Data.Migrations
                     b.Property<DateTime>("DataInclusao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 3, 15, 23, 30, 9, 235, DateTimeKind.Local).AddTicks(6187));
+                        .HasDefaultValue(new DateTime(2021, 3, 15, 23, 23, 23, 423, DateTimeKind.Local).AddTicks(4207));
+
+                    b.Property<int>("EnderecoId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -50,6 +55,9 @@ namespace Pizzaria.Infra.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("EnderecoId")
+                        .IsUnique();
 
                     b.HasIndex("UsuarioInclusaoId");
 
@@ -90,7 +98,7 @@ namespace Pizzaria.Infra.Data.Migrations
                     b.Property<DateTime>("DataInclusao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 3, 15, 23, 30, 9, 239, DateTimeKind.Local).AddTicks(3874));
+                        .HasDefaultValue(new DateTime(2021, 3, 15, 23, 23, 23, 425, DateTimeKind.Local).AddTicks(4012));
 
                     b.Property<string>("Estado")
                         .IsRequired()
@@ -107,9 +115,6 @@ namespace Pizzaria.Infra.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ClienteId")
-                        .IsUnique();
 
                     b.HasIndex("UsuarioInclusaoId");
 
@@ -219,7 +224,7 @@ namespace Pizzaria.Infra.Data.Migrations
                     b.Property<DateTime>("DataInclusao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 3, 15, 23, 30, 9, 201, DateTimeKind.Local).AddTicks(4620));
+                        .HasDefaultValue(new DateTime(2021, 3, 15, 23, 23, 23, 388, DateTimeKind.Local).AddTicks(7884));
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -253,6 +258,12 @@ namespace Pizzaria.Infra.Data.Migrations
 
             modelBuilder.Entity("Pizzaria.Domain.Entities.Cliente", b =>
                 {
+                    b.HasOne("Pizzaria.Domain.Entities.Endereco", "Endereco")
+                        .WithOne("Cliente")
+                        .HasForeignKey("Pizzaria.Domain.Entities.Cliente", "EnderecoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("Pizzaria.Domain.Entities.Usuario", "UsuarioInclusao")
                         .WithMany()
                         .HasForeignKey("UsuarioInclusaoId")
@@ -300,23 +311,17 @@ namespace Pizzaria.Infra.Data.Migrations
 
                     b.Navigation("Email");
 
+                    b.Navigation("Endereco");
+
                     b.Navigation("UsuarioInclusao");
                 });
 
             modelBuilder.Entity("Pizzaria.Domain.Entities.Endereco", b =>
                 {
-                    b.HasOne("Pizzaria.Domain.Entities.Cliente", "Cliente")
-                        .WithOne("Endereco")
-                        .HasForeignKey("Pizzaria.Domain.Entities.Endereco", "ClienteId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("Pizzaria.Domain.Entities.Usuario", "UsuarioInclusao")
                         .WithMany()
                         .HasForeignKey("UsuarioInclusaoId")
                         .OnDelete(DeleteBehavior.NoAction);
-
-                    b.Navigation("Cliente");
 
                     b.Navigation("UsuarioInclusao");
                 });
@@ -379,9 +384,9 @@ namespace Pizzaria.Infra.Data.Migrations
                     b.Navigation("UsuarioInclusao");
                 });
 
-            modelBuilder.Entity("Pizzaria.Domain.Entities.Cliente", b =>
+            modelBuilder.Entity("Pizzaria.Domain.Entities.Endereco", b =>
                 {
-                    b.Navigation("Endereco");
+                    b.Navigation("Cliente");
                 });
 
             modelBuilder.Entity("Pizzaria.Domain.Entities.Perfil", b =>

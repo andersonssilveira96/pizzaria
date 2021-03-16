@@ -21,9 +21,9 @@ namespace Pizzaria.Infra.Data.Data.Repositories.Base
             DbSet = Db.Set<T>();
         }
 
-        public EntityEntry<T> Adicionar(T obj)
+        public T Adicionar(T obj)
         {
-            var returnObj = DbSet.Add(obj);
+            var returnObj = DbSet.Add(obj).Entity;
             return returnObj;
         }
 

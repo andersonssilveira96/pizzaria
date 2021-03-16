@@ -15,7 +15,6 @@ namespace Pizzaria.Domain.Commands.Cliente
         public string Nome { get; set; }
         public int DDD { get; set; }
         public int Telefone { get; set; }
-        public int EnderecoId { get; set; }
         public BaseEnderecoCommand Endereco { get; set; }
         public int UsuarioInclusaoId { get; set; }
 

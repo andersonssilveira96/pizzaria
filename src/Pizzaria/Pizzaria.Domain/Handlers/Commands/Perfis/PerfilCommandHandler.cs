@@ -35,7 +35,7 @@ namespace Pizzaria.Domain.Handlers.Commands.Perfil
             {
                 var perfil = PerfilFactory.Criar(command);
 
-                var obj = _perfilRepository.Adicionar(perfil).Entity;
+                var obj = _perfilRepository.Adicionar(perfil);
                 _perfilRepository.Salvar();
 
                 var perfilPermissao = PerfilPermissaoFactory.Criar(obj.Id, command.Permissao.ToList());

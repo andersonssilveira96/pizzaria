@@ -50,7 +50,7 @@ namespace Pizzaria.WebAPI.Controllers
             var retorno = await _mediator.Send(command);
 
             if (retorno.Sucesso.Value)
-                return OkResponse(retorno);
+                return Ok(retorno);
             else
                 return BadResponse(retorno);
         }
@@ -64,7 +64,7 @@ namespace Pizzaria.WebAPI.Controllers
             var retorno = await _mediator.Send(command);
 
             if (retorno.Sucesso.Value)
-                return OkResponse(retorno);
+                return Ok(retorno);
             else
                 return BadResponse(retorno);
         }
@@ -76,7 +76,7 @@ namespace Pizzaria.WebAPI.Controllers
             var retorno = await _mediator.Send(new DeletarPerfilCommand { Id = id });
 
             if (retorno.Sucesso.Value)
-                return OkResponse(retorno);
+                return Ok(retorno);
             else
                 return BadResponse(retorno);
         }

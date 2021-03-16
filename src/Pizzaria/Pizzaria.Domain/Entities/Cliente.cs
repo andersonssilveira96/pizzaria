@@ -28,13 +28,27 @@ namespace Pizzaria.Domain.Entities
             DDD = ddd;
             Telefone = telefone;
         }
+
+        public void Alterar(CPF cpf, Email email, string nome, int ddd, int telefone, Endereco endereco)
+        {
+            CPF = cpf;
+            Email = email;
+            Nome = nome;
+            DDD = ddd;
+            Telefone = telefone;
+            Endereco = endereco;
+        }
+
+        public void AlterarEndereco(Endereco endereco)
+        {
+            Endereco = endereco;       
+        }
         public int Id { get; private set; }
         public CPF CPF { get; private set; }
         public Email Email { get; private set; }
         public string Nome { get; private set; }
         public int DDD { get; private set; }
         public int Telefone { get; private set; }
-        public int EnderecoId { get; private set; }
         public virtual Endereco Endereco { get; private set;}
         public virtual Usuario UsuarioInclusao { get; private set; }
     }
