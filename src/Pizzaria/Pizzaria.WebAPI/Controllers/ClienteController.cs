@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Pizzaria.Core.API.Controller;
 using Pizzaria.Domain.Commands.Cliente;
+using Pizzaria.Domain.Queries.Cliente;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Pizzaria.WebAPI.Controllers
@@ -15,6 +17,29 @@ namespace Pizzaria.WebAPI.Controllers
         public ClienteController([FromServices] IMediator mediator)
             : base(mediator)
         {
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> ObterTodos(int? telefone, string nome)
+        {
+            var retorno = await _mediator.Send(new ListarClienteQuery() { Nome = nome, Telefone = telefone });
+
+            if (retorno.Any())
+                return OkResponse(retorno);
+            else
+                return NoContent();
+        }
+
+        [HttpGet]
+        [Route("{id:int}")]
+        public async Task<IActionResult> ObterPorId([FromRoute]int id)
+        {
+            var retorno = await _mediator.Send(new ObterClienteQuery() { Id = id });
+
+            if (retorno.Sucesso.Value)
+                return OkResponse(retorno);
+            else
+                return BadResponse("Usuario não existe");
         }
 
         [HttpPost]

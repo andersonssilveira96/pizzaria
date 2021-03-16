@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using Pizzaria.Domain.Entities;
+using Pizzaria.Domain.Response.Cliente;
+using Pizzaria.Domain.Response.Endereco;
 using Pizzaria.Domain.Response.Perfil;
 using Pizzaria.Domain.Response.Permissao;
 using Pizzaria.Domain.Response.Usuario;
@@ -33,6 +35,20 @@ namespace Pizzaria.Infra.CrossCutting.IoC
                 cfg.CreateMap<Perfil, BasePerfilResponse>();                 
                 cfg.CreateMap<PerfilPermissao, PermissaoResponse>();                    
                 cfg.CreateMap<Permissao, PermissaoResponse>();
+
+                cfg.CreateMap<Endereco, EnderecoCompletoResponse>();
+
+                cfg.CreateMap<Cliente, BaseClienteResponse>()
+                    .ForMember(x => x.Email, opt => opt.MapFrom(x => x.Email.Valor))
+                    .ForMember(x => x.CPF, opt => opt.MapFrom(x => x.CPF.Valor));
+
+                cfg.CreateMap<Cliente, ClienteCompletoResponse>()
+                 .ForMember(x => x.Email, opt => opt.MapFrom(x => x.Email.Valor))
+                 .ForMember(x => x.CPF, opt => opt.MapFrom(x => x.CPF.Valor));
+
+
+               
+                 
             });
 
             IMapper mapper = config.CreateMapper();
