@@ -35,6 +35,11 @@ namespace Pizzaria.Core.API.Controller
         protected IActionResult BadResponse(BaseResponse response)
         {
             return BadRequest(new { Sucesso = response.Sucesso, Mensagem = response.Mensagem });
-        }          
+        }
+        protected IActionResult OkResponse(BaseResponse response)
+        {
+            return Ok(new { Sucesso = response.Sucesso, Mensagem = response.Mensagem });
+        }
+        
     }
 }

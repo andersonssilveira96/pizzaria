@@ -37,7 +37,11 @@ namespace Pizzaria.Infra.Data.Repositories
 
         public IEnumerable<Cliente> ObterTodos(ListarClienteQuery query)
         {
-            return DbSet.Where(x => (query.Nome == null || x.Nome.Contains(query.Nome)) && (query.Telefone == null || x.Telefone.ToString().Contains(query.Telefone.ToString())));                                     
+            return DbSet.Where(x => 
+                            (query.Nome == null || x.Nome.Contains(query.Nome)) && 
+                            (query.Telefone == null || x.Telefone.ToString().Contains(query.Telefone.ToString())) && 
+                            (query.CPF == null || x.CPF.Valor.Contains(query.CPF))
+                        );                                     
         }
 
     }
