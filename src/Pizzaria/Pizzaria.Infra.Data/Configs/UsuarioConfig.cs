@@ -37,6 +37,8 @@ namespace Pizzaria.Infra.Data.Data.Configs
                 .OnDelete(DeleteBehavior.NoAction); 
 
             builder.HasOne(p => p.Perfil).WithMany().HasForeignKey(x => x.PerfilId).IsRequired();
+
+            builder.HasQueryFilter(x => x.Ativo == true);
         }
     }
 }
