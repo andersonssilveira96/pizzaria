@@ -31,6 +31,11 @@ namespace Pizzaria.Infra.Data.Data.Repositories
         {
             return Procurar(x => x.Id == id).Any();
         }
+
+        public bool VerificarUsuarioExistenteComPerfil(int perfilId)
+        {
+            return Procurar(x => x.PerfilId == perfilId).Any();
+        }
         public override Usuario ObterPorId(int id)
         {
             return DbSet.Where(x => x.Id == id)

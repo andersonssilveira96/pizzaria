@@ -10,5 +10,6 @@ namespace Pizzaria.Domain.Interfaces.Repositories
         Usuario Autenticar(AutenticarCommand usuarioCommand);
         bool VerificarEmailExistente(int usuarioId, string email);
         bool VerificarUsuarioExistente(int usuarioId);
+        bool VerificarUsuarioExistenteComPerfil(int perfilId);
     }
 }

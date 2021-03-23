@@ -21,10 +21,12 @@ namespace Pizzaria.Domain.Handlers.Commands.Perfil
 
         private readonly IPerfilRepository _perfilRepository;
         private readonly IPerfilPermissaoRepository _perfilPermissaoRepository;
-        public PerfilCommandHandler(IPerfilRepository perfilRepository, IPerfilPermissaoRepository perfilPermissaoRepository)
+        private readonly IUsuarioRepository _usuarioRepository;
+        public PerfilCommandHandler(IPerfilRepository perfilRepository, IPerfilPermissaoRepository perfilPermissaoRepository, IUsuarioRepository usuarioRepository)
         {
             _perfilRepository = perfilRepository;
             _perfilPermissaoRepository = perfilPermissaoRepository;
+            _usuarioRepository = usuarioRepository;
         }
         public Task<CadastrarPerfilResponse> Handle(CadastrarPerfilCommand command, CancellationToken cancellationToken)
         {
@@ -83,7 +85,7 @@ namespace Pizzaria.Domain.Handlers.Commands.Perfil
         }
         public Task<DeletarPerfilResponse> Handle(DeletarPerfilCommand command, CancellationToken cancellationToken)
         {
-            DeletarPerfilCommandValidator validator = new DeletarPerfilCommandValidator(_perfilRepository);
+            DeletarPerfilCommandValidator validator = new DeletarPerfilCommandValidator(_perfilRepository, _usuarioRepository);
             ValidationResult result = validator.Validate(command);
 
             if (result.IsValid)
