@@ -13,6 +13,8 @@ namespace Pizzaria.Infra.Data.Data.Context
         public DbSet<Permissao> Permissao { get; set; }
         public DbSet<PerfilPermissao> PerfilPermissao { get; set; }
         public DbSet<Usuario> Usuario { get; set; }
+        public DbSet<Categoria> Categoria { get; set; }
+        public DbSet<Produto> Produto { get; set; }
 
         public PizzariaContext(IConfiguration configuration)
         {
