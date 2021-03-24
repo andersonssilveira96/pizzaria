@@ -17,5 +17,15 @@ namespace Pizzaria.Infra.Data.Repositories
         {
             return Procurar(x => x.CategoriaId == categoriaId).Any();
         }
+
+        public bool VerificarProdutoExistente(int id)
+        {
+            return Procurar(x => x.Id == id).Any();
+        }
+
+        public bool VerificarProdutoExistente(int id, string descricao)
+        {
+            return Procurar(x => x.Descricao == descricao && x.Id != id).Any();
+        }
     }
 }

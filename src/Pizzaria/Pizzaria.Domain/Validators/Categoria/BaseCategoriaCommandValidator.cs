@@ -22,9 +22,9 @@ namespace Pizzaria.Domain.Validators.Categoria
               .NotEmpty().WithMessage("Descricao é obrigatório")
               .MinimumLength(3).WithMessage("Descricao possui mínimo de 3 caracteres")
               .MaximumLength(300).WithMessage("Descricao possui máximo de 300 caracteres")
-              .Must((perfil, Descricao) =>
+              .Must((categoria, Descricao) =>
               {
-                  return !_categoriaRepository.VerificarCategoriaExistente(perfil.Id, Descricao);
+                  return !_categoriaRepository.VerificarCategoriaExistente(categoria.Id, Descricao);
               }).WithMessage("Já existe uma categoria cadastrada com esse nome");
         }
     }

@@ -3,5 +3,9 @@
     public class BaseProdutoCommand
     {
         public int Id { get; set; }
+        public decimal Valor { get; set; }
+        public string Descricao { get; set; }
+        public int CategoriaId { get; set; }
+        public byte[] Imagem { get; set; }
     }
 }
