@@ -41,6 +41,8 @@ namespace Pizzaria.Infra.Data.Configs
             builder.HasOne(p => p.Endereco)
                    .WithOne(x => x.Cliente)
                    .HasForeignKey<Endereco>(x => x.ClienteId);
+
+            builder.HasQueryFilter(p => p.Ativo == true);
         }
     }
 }
