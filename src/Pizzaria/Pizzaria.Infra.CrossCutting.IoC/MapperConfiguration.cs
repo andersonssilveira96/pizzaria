@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.Extensions.DependencyInjection;
 using Pizzaria.Domain.Entities;
+using Pizzaria.Domain.Response.Categoria;
 using Pizzaria.Domain.Response.Cliente;
 using Pizzaria.Domain.Response.Endereco;
 using Pizzaria.Domain.Response.Perfil;
@@ -33,7 +34,11 @@ namespace Pizzaria.Infra.CrossCutting.IoC
                         })));
 
                 cfg.CreateMap<Perfil, BasePerfilResponse>();                 
-                cfg.CreateMap<PerfilPermissao, PermissaoResponse>();                    
+                cfg.CreateMap<PerfilPermissao, PermissaoResponse>();
+
+                cfg.CreateMap<Categoria, BaseCategoriaResponse>();
+                cfg.CreateMap<Categoria, CategoriaCompletoResponse>();
+
                 cfg.CreateMap<Permissao, PermissaoResponse>();
 
                 cfg.CreateMap<Endereco, EnderecoCompletoResponse>();

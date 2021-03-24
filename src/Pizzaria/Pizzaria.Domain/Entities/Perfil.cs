@@ -18,8 +18,7 @@ namespace Pizzaria.Domain.Entities
         public void Alterar(string descricao)
         {
             Descricao = descricao;
-        }
-        public int Id { get; private set; }
+        }       
         public string Descricao { get; private set; }
         public virtual ICollection<PerfilPermissao> PerfilPermissao { get; private set; }
     }

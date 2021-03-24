@@ -33,8 +33,7 @@ namespace Pizzaria.Domain.Entities
         protected Usuario()
         {
         }
-
-        public int Id { get; private set; }
+      
         public Email Email { get; private set; }
         public string Nome { get; private set; }
         public string Sobrenome { get; private set; }

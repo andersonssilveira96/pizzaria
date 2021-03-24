@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Pizzaria.Core.API.Controller;
-using Pizzaria.Domain.Commands.Produto;
-using Pizzaria.Domain.Queries.Produto;
+using Pizzaria.Domain.Commands.Categoria;
+using Pizzaria.Domain.Queries.Categoria;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -11,10 +11,10 @@ namespace Pizzaria.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Policy = "Produto")]
-    public class ProdutoController : BaseController
+    [Authorize(Policy = "Categoria")]
+    public class CategoriaController : BaseController
     {
-        public ProdutoController([FromServices] IMediator mediator)
+        public CategoriaController([FromServices] IMediator mediator)
             : base(mediator)
         {
         }
@@ -22,7 +22,7 @@ namespace Pizzaria.WebAPI.Controllers
         [HttpGet]
         public async Task<IActionResult> ObterTodos()
         {
-            var retorno = await _mediator.Send(new ListarProdutoQuery());
+            var retorno = await _mediator.Send(new ListarCategoriaQuery());
 
             if (retorno.Any())
                 return Ok(retorno);
@@ -34,7 +34,7 @@ namespace Pizzaria.WebAPI.Controllers
         [Route("{id:int}")]
         public async Task<IActionResult> ObterPorId(int id)
         {
-            var retorno = await _mediator.Send(new ObterProdutoQuery() { Id = id });
+            var retorno = await _mediator.Send(new ObterCategoriaQuery() { Id = id });
 
             if (retorno.Sucesso)
                 return Ok(retorno);
@@ -43,7 +43,7 @@ namespace Pizzaria.WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Cadastrar(CadastrarProdutoCommand command)
+        public async Task<IActionResult> Cadastrar(CadastrarCategoriaCommand command)
         {
             command.UsuarioInclusaoId = ObterUsuarioInclusaoId();
 
@@ -57,7 +57,7 @@ namespace Pizzaria.WebAPI.Controllers
 
         [HttpPut]
         [Route("{id:int}")]
-        public async Task<IActionResult> Atualizar(int id, AtualizarProdutoCommand command)
+        public async Task<IActionResult> Atualizar(int id, AtualizarCategoriaCommand command)
         {
             command.Id = id;
 
@@ -73,7 +73,7 @@ namespace Pizzaria.WebAPI.Controllers
         [Route("{id:int}")]
         public async Task<IActionResult> Deletar(int id)
         {
-            var retorno = await _mediator.Send(new DeletarProdutoCommand { Id = id });
+            var retorno = await _mediator.Send(new DeletarCategoriaCommand { Id = id });
 
             if (retorno.Sucesso)
                 return OkResponse(retorno);

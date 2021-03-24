@@ -42,8 +42,7 @@ namespace Pizzaria.Domain.Entities
         public void AlterarEndereco(Endereco endereco)
         {
             Endereco = endereco;       
-        }
-        public int Id { get; private set; }
+        }       
         public CPF CPF { get; private set; }
         public Email Email { get; private set; }
         public string Nome { get; private set; }

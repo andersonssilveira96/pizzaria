@@ -7,7 +7,7 @@ namespace Pizzaria.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(Policy = "PDS")]
+    [Authorize(Policy = "Pedido")]
     public class PedidoController : BaseController
     {
         public PedidoController([FromServices] IMediator mediator)

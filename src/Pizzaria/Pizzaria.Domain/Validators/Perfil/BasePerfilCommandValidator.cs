@@ -6,11 +6,11 @@ namespace Pizzaria.Domain.Validators.Perfil
 {
     public class BasePerfilCommandValidator : AbstractValidator<BasePerfilCommand>
     {
-        private readonly IPerfilRepository _perfiloRepository;
+        private readonly IPerfilRepository _perfilRepository;
 
         public BasePerfilCommandValidator(IPerfilRepository perfilRepository)
         {
-            _perfiloRepository = perfilRepository;
+            _perfilRepository = perfilRepository;
 
             RuleFor(e => e.Id)
                .Must((Id) =>

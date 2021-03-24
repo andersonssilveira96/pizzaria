@@ -28,7 +28,6 @@ namespace Pizzaria.Domain.Entities
             Estado = estado;
             CEP = cep;
         }
-        public int Id { get; private set; }
         public string Rua { get; private set; }
         public int Numero { get; private set; }
         public string Complemento { get; private set; }
