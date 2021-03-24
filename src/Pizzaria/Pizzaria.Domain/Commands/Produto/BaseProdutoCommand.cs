@@ -1,4 +1,6 @@
-﻿namespace Pizzaria.Domain.Commands.Produto
+﻿using Microsoft.AspNetCore.Http;
+
+namespace Pizzaria.Domain.Commands.Produto
 {
     public class BaseProdutoCommand
     {
@@ -6,6 +8,6 @@
         public decimal Valor { get; set; }
         public string Descricao { get; set; }
         public int CategoriaId { get; set; }
-        public byte[] Imagem { get; set; }
+        public IFormFile Imagem { get; set; }
     }
 }

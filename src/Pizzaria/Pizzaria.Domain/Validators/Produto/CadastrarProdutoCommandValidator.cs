@@ -1,12 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Pizzaria.Domain.Interfaces.Repositories;
 
 namespace Pizzaria.Domain.Validators.Produto
 {
-    class CadastrarProdutoCommandValidator
+    public class CadastrarProdutoCommandValidator : BaseProdutoCommandValidator
     {
-    }
+        public CadastrarProdutoCommandValidator(IProdutoRepository produtoRepository) : base(produtoRepository)
+        {
+        }
+    }    
 }

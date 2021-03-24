@@ -43,10 +43,10 @@ namespace Pizzaria.WebAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Cadastrar(CadastrarProdutoCommand command)
+        public async Task<IActionResult> Cadastrar([FromForm]CadastrarProdutoCommand command)
         {
             command.UsuarioInclusaoId = ObterUsuarioInclusaoId();
-
+           
             var retorno = await _mediator.Send(command);
 
             if (retorno.Sucesso)
