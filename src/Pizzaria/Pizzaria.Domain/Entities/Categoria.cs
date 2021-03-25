@@ -9,18 +9,22 @@ namespace Pizzaria.Domain.Entities
         {
         }
 
-        public Categoria(string descricao, int usuarioInclusaoId)
+        public Categoria(string descricao, string icone, int usuarioInclusaoId)
         {
             Descricao = descricao;
-            UsuarioInclusaoId = usuarioInclusaoId;
+            Icone = icone;
+            UsuarioInclusaoId = usuarioInclusaoId;            
         }
 
-        public void Alterar(string descricao)
+        public void Alterar(string descricao, string icone)
         {
             Descricao = descricao;
+            Icone = icone;
         }
         public string Descricao { get; private set; }
+        public string Icone { get; private set; }
         public virtual ICollection<Produto> Produto { get; private set; }
         public virtual Usuario UsuarioInclusao { get; private set; }
     }
 }
+

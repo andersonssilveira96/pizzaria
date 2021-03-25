@@ -7,7 +7,7 @@ namespace Pizzaria.Domain.Factories.Categorias
     {
         public static Categoria Criar(CadastrarCategoriaCommand command)
         {
-            return new Categoria(command.Descricao, command.UsuarioInclusaoId);
+            return new Categoria(command.Descricao, command.Icone, command.UsuarioInclusaoId);
         }
     }
 }

@@ -51,7 +51,7 @@ namespace Pizzaria.Domain.Handlers.Commands.Categoria
             {
                 var categoria = _categoriaRepository.ObterPorId(command.Id);
 
-                categoria.Alterar(command.Descricao);
+                categoria.Alterar(command.Descricao, command.Icone);
 
                 _categoriaRepository.Atualizar(categoria);
 

@@ -26,6 +26,10 @@ namespace Pizzaria.Domain.Validators.Categoria
               {
                   return !_categoriaRepository.VerificarCategoriaExistente(categoria.Id, Descricao);
               }).WithMessage("Já existe uma categoria cadastrada com esse nome");
+
+            RuleFor(e => e.Icone)
+              .NotEmpty().WithMessage("Ícone é obrigatório");
+              
         }
     }
 }

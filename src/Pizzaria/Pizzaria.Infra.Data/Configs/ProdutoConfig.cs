@@ -15,8 +15,6 @@ namespace Pizzaria.Infra.Data.Configs
 
             builder.Property(e => e.Valor).IsRequired();
 
-            builder.Property(e => e.Imagem).IsRequired();
-
             builder.Property(p => p.Ativo)
                 .IsRequired()
                 .HasDefaultValue(true);

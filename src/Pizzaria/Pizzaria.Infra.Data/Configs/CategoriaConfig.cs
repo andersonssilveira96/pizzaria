@@ -12,7 +12,9 @@ namespace Pizzaria.Infra.Data.Configs
             builder.HasKey(e => e.Id);
 
             builder.Property(e => e.Descricao).IsRequired();
-          
+
+            builder.Property(e => e.Icone).IsRequired();
+
             builder.Property(p => p.Ativo)
                 .IsRequired()
                 .HasDefaultValue(true);

@@ -11,7 +11,6 @@ using Pizzaria.Core.API.Startup;
 using Pizzaria.Infra.CrossCutting.IoC;
 using System;
 using System.Text;
-using System.Text.Json.Serialization;
 
 namespace Pizzaria.WebAPI
 {
