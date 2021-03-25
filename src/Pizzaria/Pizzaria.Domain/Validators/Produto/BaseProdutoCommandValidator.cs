@@ -15,7 +15,7 @@ namespace Pizzaria.Domain.Validators.Produto
                .Must((Id) =>
                {
                    return _produtoRepository.VerificarProdutoExistente(Id);
-               }).WithMessage("Não existe uma categoria com esse Id")
+               }).WithMessage("Não existe um produto com esse Id")
                .When(e => e.Id > 0);
 
             RuleFor(e => e.Descricao)
@@ -25,7 +25,7 @@ namespace Pizzaria.Domain.Validators.Produto
               .Must((produto, Descricao) =>
               {
                   return !_produtoRepository.VerificarProdutoExistente(produto.Id, Descricao);
-              }).WithMessage("Já existe uma categoria cadastrada com esse nome");
+              }).WithMessage("Já existe um produto cadastrada com esse nome");
 
 
             RuleFor(e => e.Valor)

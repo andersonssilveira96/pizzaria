@@ -14,6 +14,13 @@ namespace Pizzaria.Domain.Entities
         protected Produto() 
         { 
         }
+        
+        public void Alterar(decimal valor, string descricao, int categoriaId)
+        {
+            Valor = valor;
+            Descricao = descricao;
+            CategoriaId = categoriaId;
+        }
         public decimal Valor { get; private set; }
         public string Descricao { get; private set; }        
         public int CategoriaId { get; private set; }

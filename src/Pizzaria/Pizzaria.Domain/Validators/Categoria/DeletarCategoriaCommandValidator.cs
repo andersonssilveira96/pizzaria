@@ -12,7 +12,7 @@ namespace Pizzaria.Domain.Validators.Categoria
                .Must((Id) =>
                {
                    return categoriaRepository.VerificarCategoriaExistente(Id);
-               }).WithMessage("Não existe um perfil com esse Id")
+               }).WithMessage("Não existe uma categoria com esse Id")
                .When(e => e.Id > 0);
 
             RuleFor(e => e.Id)

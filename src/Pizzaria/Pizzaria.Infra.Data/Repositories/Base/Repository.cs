@@ -45,7 +45,7 @@ namespace Pizzaria.Infra.Data.Data.Repositories.Base
             return returnObj;
         }
 
-        public IEnumerable<T> ObterTodos()
+        public virtual IEnumerable<T> ObterTodos()
         {
             return DbSet.ToList();
         }

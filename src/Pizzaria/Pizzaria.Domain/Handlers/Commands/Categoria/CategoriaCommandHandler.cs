@@ -33,7 +33,7 @@ namespace Pizzaria.Domain.Handlers.Commands.Categoria
             {
                 var categoria = CategoriaFactory.Criar(command);
 
-                var obj = _categoriaRepository.Adicionar(categoria);
+                _categoriaRepository.Adicionar(categoria);
                 _categoriaRepository.Salvar();
 
                 return Task.FromResult(new CadastrarCategoriaResponse() { Sucesso = true, Mensagem = new List<string>() { "Categoria cadastrada com sucesso" } });
