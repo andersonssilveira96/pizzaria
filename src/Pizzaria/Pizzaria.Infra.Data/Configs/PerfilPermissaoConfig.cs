@@ -11,6 +11,7 @@ namespace Pizzaria.Infra.Data.Data.Configs
             builder.HasKey(e => e.Id);
             builder.HasOne(e => e.Perfil).WithMany(e => e.PerfilPermissao).HasForeignKey(e => e.PerfilId);
             builder.HasOne(e => e.Permissao).WithMany(e => e.PerfilPermissao).HasForeignKey(e => e.PermissaoId);
+            builder.HasQueryFilter(e => e.Ativo == true);
         }
     }
 }
