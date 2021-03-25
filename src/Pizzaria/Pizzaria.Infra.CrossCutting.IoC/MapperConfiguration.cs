@@ -6,6 +6,7 @@ using Pizzaria.Domain.Response.Cliente;
 using Pizzaria.Domain.Response.Endereco;
 using Pizzaria.Domain.Response.Perfil;
 using Pizzaria.Domain.Response.Permissao;
+using Pizzaria.Domain.Response.Produto;
 using Pizzaria.Domain.Response.Usuario;
 using System.Linq;
 
@@ -38,6 +39,9 @@ namespace Pizzaria.Infra.CrossCutting.IoC
 
                 cfg.CreateMap<Categoria, BaseCategoriaResponse>();
                 cfg.CreateMap<Categoria, CategoriaCompletoResponse>();
+
+                cfg.CreateMap<Produto, BaseProdutoResponse>();
+                cfg.CreateMap<Produto, ProdutoCompletoResponse>();
 
                 cfg.CreateMap<Permissao, PermissaoResponse>();
 

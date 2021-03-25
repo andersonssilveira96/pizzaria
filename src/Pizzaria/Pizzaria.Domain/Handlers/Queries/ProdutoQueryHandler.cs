@@ -20,14 +20,20 @@ namespace Pizzaria.Domain.Handlers.Queries
             _produtoRepository = produtoRepository;
             _mapper = mapper;
         }
-        public Task<IEnumerable<BaseProdutoResponse>> Handle(ListarProdutoQuery request, CancellationToken cancellationToken)
+        public Task<IEnumerable<BaseProdutoResponse>> Handle(ListarProdutoQuery query, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            var retorno = _produtoRepository.ObterTodos();
+            return Task.FromResult(_mapper.Map<IEnumerable<BaseProdutoResponse>>(retorno));
         }
 
-        public Task<ProdutoCompletoResponse> Handle(ObterProdutoQuery request, CancellationToken cancellationToken)
+        public Task<ProdutoCompletoResponse> Handle(ObterProdutoQuery query, CancellationToken cancellationToken)
         {
-            throw new System.NotImplementedException();
+            var produto = _produtoRepository.ObterPorId(query.Id);
+
+            if (produto != null)
+                return Task.FromResult(_mapper.Map<ProdutoCompletoResponse>(produto));
+            else
+                return Task.FromResult(new ProdutoCompletoResponse() { Sucesso = false, Mensagem = new List<string>() { "Produto não encontrado" } });
         }
     }
 }
