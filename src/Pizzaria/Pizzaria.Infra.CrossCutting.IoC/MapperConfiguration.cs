@@ -7,6 +7,7 @@ using Pizzaria.Domain.Response.Endereco;
 using Pizzaria.Domain.Response.Perfil;
 using Pizzaria.Domain.Response.Permissao;
 using Pizzaria.Domain.Response.Produto;
+using Pizzaria.Domain.Response.TipoPedido;
 using Pizzaria.Domain.Response.Usuario;
 using System.Linq;
 
@@ -56,8 +57,8 @@ namespace Pizzaria.Infra.CrossCutting.IoC
                  .ForMember(x => x.CPF, opt => opt.MapFrom(x => x.CPF.Valor));
 
 
-               
-                 
+                cfg.CreateMap<TipoPedido, TipoPedidoResponse>();
+
             });
 
             IMapper mapper = config.CreateMapper();

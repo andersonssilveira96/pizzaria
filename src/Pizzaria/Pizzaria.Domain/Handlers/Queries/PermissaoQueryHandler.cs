@@ -18,7 +18,7 @@ namespace Pizzaria.Domain.Handlers.Queries
             _permissaoRepository = permissaoRepository;
             _mapper = mapper;
         }
-        public Task<IEnumerable<PermissaoResponse>> Handle(ListarPermissaoQuery request, CancellationToken cancellationToken)
+        public Task<IEnumerable<PermissaoResponse>> Handle(ListarPermissaoQuery query, CancellationToken cancellationToken)
         {
             var retorno = _permissaoRepository.ObterTodos();
             return Task.FromResult(_mapper.Map<IEnumerable<PermissaoResponse>>(retorno));
