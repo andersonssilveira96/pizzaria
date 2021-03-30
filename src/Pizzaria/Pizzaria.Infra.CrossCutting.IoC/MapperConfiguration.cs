@@ -8,6 +8,7 @@ using Pizzaria.Domain.Response.FormaPagamento;
 using Pizzaria.Domain.Response.Perfil;
 using Pizzaria.Domain.Response.Permissao;
 using Pizzaria.Domain.Response.Produto;
+using Pizzaria.Domain.Response.StatusPedido;
 using Pizzaria.Domain.Response.TipoPedido;
 using Pizzaria.Domain.Response.Usuario;
 using System.Linq;
@@ -60,7 +61,7 @@ namespace Pizzaria.Infra.CrossCutting.IoC
 
                 cfg.CreateMap<TipoPedido, TipoPedidoResponse>();
                 cfg.CreateMap<FormaPagamento, FormaPagamentoResponse>();
-
+                cfg.CreateMap<StatusPedido, StatusPedidoResponse>();
             });
 
             IMapper mapper = config.CreateMapper();

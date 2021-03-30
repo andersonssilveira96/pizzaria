@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pizzaria.Infra.Data.Data.Context;
 
 namespace Pizzaria.Infra.Data.Migrations
 {
     [DbContext(typeof(PizzariaContext))]
-    partial class AutenticacaoContextModelSnapshot : ModelSnapshot
+    [Migration("20210330023948_statusPedido")]
+    partial class statusPedido
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -34,7 +36,7 @@ namespace Pizzaria.Infra.Data.Migrations
                     b.Property<DateTime>("DataInclusao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 3, 29, 23, 42, 28, 513, DateTimeKind.Local).AddTicks(1012));
+                        .HasDefaultValue(new DateTime(2021, 3, 29, 23, 39, 48, 280, DateTimeKind.Local).AddTicks(1113));
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -72,7 +74,7 @@ namespace Pizzaria.Infra.Data.Migrations
                     b.Property<DateTime>("DataInclusao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 3, 29, 23, 42, 28, 542, DateTimeKind.Local).AddTicks(2149));
+                        .HasDefaultValue(new DateTime(2021, 3, 29, 23, 39, 48, 312, DateTimeKind.Local).AddTicks(7990));
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -125,7 +127,7 @@ namespace Pizzaria.Infra.Data.Migrations
                     b.Property<DateTime>("DataInclusao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 3, 29, 23, 42, 28, 546, DateTimeKind.Local).AddTicks(1577));
+                        .HasDefaultValue(new DateTime(2021, 3, 29, 23, 39, 48, 317, DateTimeKind.Local).AddTicks(5166));
 
                     b.Property<string>("Estado")
                         .IsRequired()
@@ -166,7 +168,7 @@ namespace Pizzaria.Infra.Data.Migrations
                     b.Property<DateTime>("DataInclusao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 3, 29, 23, 42, 28, 547, DateTimeKind.Local).AddTicks(6518));
+                        .HasDefaultValue(new DateTime(2021, 3, 29, 23, 39, 48, 319, DateTimeKind.Local).AddTicks(216));
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -283,7 +285,7 @@ namespace Pizzaria.Infra.Data.Migrations
                     b.Property<DateTime>("DataInclusao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 3, 29, 23, 42, 28, 549, DateTimeKind.Local).AddTicks(762));
+                        .HasDefaultValue(new DateTime(2021, 3, 29, 23, 39, 48, 320, DateTimeKind.Local).AddTicks(4671));
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -304,35 +306,6 @@ namespace Pizzaria.Infra.Data.Migrations
                     b.ToTable("Produto");
                 });
 
-            modelBuilder.Entity("Pizzaria.Domain.Entities.StatusPedido", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<bool>("Ativo")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(true);
-
-                    b.Property<DateTime>("DataInclusao")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 3, 29, 23, 42, 28, 550, DateTimeKind.Local).AddTicks(5109));
-
-                    b.Property<string>("Descricao")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("UsuarioInclusaoId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("StatusPedido");
-                });
-
             modelBuilder.Entity("Pizzaria.Domain.Entities.TipoPedido", b =>
                 {
                     b.Property<int>("Id")
@@ -348,7 +321,7 @@ namespace Pizzaria.Infra.Data.Migrations
                     b.Property<DateTime>("DataInclusao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 3, 29, 23, 42, 28, 551, DateTimeKind.Local).AddTicks(8123));
+                        .HasDefaultValue(new DateTime(2021, 3, 29, 23, 39, 48, 322, DateTimeKind.Local).AddTicks(6043));
 
                     b.Property<string>("Descricao")
                         .IsRequired()
@@ -380,7 +353,7 @@ namespace Pizzaria.Infra.Data.Migrations
                     b.Property<DateTime>("DataInclusao")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2021, 3, 29, 23, 42, 28, 510, DateTimeKind.Local).AddTicks(2756));
+                        .HasDefaultValue(new DateTime(2021, 3, 29, 23, 39, 48, 276, DateTimeKind.Local).AddTicks(6073));
 
                     b.Property<string>("Nome")
                         .IsRequired()

@@ -5,9 +5,9 @@ using System;
 
 namespace Pizzaria.Infra.Data.Configs
 {
-    public class TipoPedidoConfig : IEntityTypeConfiguration<TipoPedido>
+    public class StatusPedidoConfig : IEntityTypeConfiguration<StatusPedido>
     {
-        public void Configure(EntityTypeBuilder<TipoPedido> builder)
+        public void Configure(EntityTypeBuilder<StatusPedido> builder)
         {
             builder.HasKey(e => e.Id);
 
@@ -19,10 +19,10 @@ namespace Pizzaria.Infra.Data.Configs
 
             builder.Property(p => p.DataInclusao)
                .IsRequired()
-               .HasDefaultValue(DateTime.Now);          
+               .HasDefaultValue(DateTime.Now);
 
             builder.HasQueryFilter(e => e.Ativo == true);
 
         }
-    }   
+    }
 }
