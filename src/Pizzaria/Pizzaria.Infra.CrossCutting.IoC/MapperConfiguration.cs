@@ -4,6 +4,7 @@ using Pizzaria.Domain.Entities;
 using Pizzaria.Domain.Response.Categoria;
 using Pizzaria.Domain.Response.Cliente;
 using Pizzaria.Domain.Response.Endereco;
+using Pizzaria.Domain.Response.FormaPagamento;
 using Pizzaria.Domain.Response.Perfil;
 using Pizzaria.Domain.Response.Permissao;
 using Pizzaria.Domain.Response.Produto;
@@ -58,6 +59,7 @@ namespace Pizzaria.Infra.CrossCutting.IoC
 
 
                 cfg.CreateMap<TipoPedido, TipoPedidoResponse>();
+                cfg.CreateMap<FormaPagamento, FormaPagamentoResponse>();
 
             });
 
