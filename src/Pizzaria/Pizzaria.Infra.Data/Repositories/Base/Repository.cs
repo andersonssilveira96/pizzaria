@@ -7,22 +7,23 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using Pizzaria.Core.Domain.Entities;
 
 namespace Pizzaria.Infra.Data.Data.Repositories.Base
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : EntityBase
     {
-        protected AutenticacaoContext Db;
+        protected PizzariaContext Db;
         protected DbSet<T> DbSet;
-        public Repository([FromServices] AutenticacaoContext context)
+        public Repository([FromServices] PizzariaContext context)
         {
             Db = context;
             DbSet = Db.Set<T>();
         }
 
-        public EntityEntry<T> Adicionar(T obj)
+        public T Adicionar(T obj)
         {
-            var returnObj = DbSet.Add(obj);
+            var returnObj = DbSet.Add(obj).Entity;
             return returnObj;
         }
 
@@ -34,7 +35,7 @@ namespace Pizzaria.Infra.Data.Data.Repositories.Base
 
             return obj;
         }      
-        public T ObterPorId(int id)
+        public virtual T ObterPorId(int id)
         {
             var returnObj = DbSet.Find(id);
 
@@ -44,7 +45,7 @@ namespace Pizzaria.Infra.Data.Data.Repositories.Base
             return returnObj;
         }
 
-        public IEnumerable<T> ObterTodos()
+        public virtual IEnumerable<T> ObterTodos()
         {
             return DbSet.ToList();
         }
@@ -56,7 +57,9 @@ namespace Pizzaria.Infra.Data.Data.Repositories.Base
 
         public void Remover(int id)
         {
-            DbSet.Remove(DbSet.Find(id));
+            var entity = ObterPorId(id);
+            entity.Ativo = false;
+            DbSet.Update(entity);
         }
 
         public int Salvar()

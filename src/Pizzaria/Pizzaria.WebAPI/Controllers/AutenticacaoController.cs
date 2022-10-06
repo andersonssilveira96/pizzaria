@@ -1,14 +1,15 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Pizzaria.Domain.Commands;
 using Pizzaria.Core.API.Controller;
+using Pizzaria.Domain.Commands.Autenticacao;
 using System.Threading.Tasks;
 
 namespace Pizzaria.WebAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [AllowAnonymous]
     public class AutenticacaoController : BaseController
     {      
         public AutenticacaoController([FromServices]IMediator mediator)
@@ -16,8 +17,7 @@ namespace Pizzaria.WebAPI.Controllers
         {
         }
 
-        [HttpPost]
-        [AllowAnonymous]
+        [HttpPost]       
         public async Task<IActionResult> Autenticar(AutenticarCommand command)
         {
             var retorno = await _mediator.Send(command);
@@ -25,7 +25,7 @@ namespace Pizzaria.WebAPI.Controllers
             if (retorno.Sucesso)
                 return Ok(retorno);
             else
-                return BadRequest(new { Sucesso = retorno.Sucesso, Mensagem = retorno.Mensagem });
+                return BadResponse(retorno);
         }       
     }
 }
